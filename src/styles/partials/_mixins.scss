@@ -1,0 +1,17 @@
+@use './colors' as *;
+@use './variables' as *;
+
+// Media Queries
+// Tablet: Defined at 768px, but applied to size range 768px to 1279px
+@mixin tablet {
+    @media (min-width:$tablet-min-width) and (max-width:$tablet-max-width) {
+        @content;
+    }
+}
+
+// Desktop: Defined at 1280px, but applied to size greater than 1279px
+@mixin desktop {
+    @media (min-width:$desktop-min-width) {
+        @content;
+    }
+}

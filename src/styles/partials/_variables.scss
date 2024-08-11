@@ -1,0 +1,72 @@
+@use './colors' as *;
+
+// Responsive Design Parameters
+// Tablet Devices (between 768px and 1279px; defined at 768px)
+$tablet-min-width: 768px;
+$tablet-max-width: 1279px;
+
+// Desktop Devices (greater than 1280px; defined at 1280px)
+$desktop-min-width: 1280px;
+
+// Padding Increments:
+// 4px -> 8px -> 16px -> 24px -> 32px -> 40px -> 48px -> 56px -> 64px -> 80px  
+
+// Mobile Layout Grid & Padding
+$mobile-margin: 16px;
+$mobile-columns: auto;
+$mobile-gutter: 16px;
+
+$mobile-padding: 16px;
+$mobile-headline-padding-top: 24px;
+$mobile-headline-padding-bottom: 26px;
+
+// Tablet Layout Grid
+$tablet-margin: 36px;
+$tablet-columns: auto;
+$tablet-gutter: 24px;
+
+// Desktop Layout Grid
+$desktop-margin: auto;
+$desktop-columns: 63px;
+$desktop-gutter: 24px;
+
+// Tablet & Desktop Padding
+$tablet-desktop-padding: 24px;
+$tablet-desktop-headline-padding-top: 36px;
+$tablet-desktop-headline-padding-bottom: 24px;
+
+// Button Styling
+$button-height: 40px;
+$button-mobile-width: 100%;
+$button-tablet-desktop-width: 150px;
+$button-tablet-desktop-padding: 32px;
+$button-radius: 4px;
+
+// Form Field Styling
+$form-field-mobile-height: 36px;
+$form-field-tablet-desktop_height: 40px;
+$form-field-width: 240px; //width should not exceed 100% of container width
+$form-field-radius: 4px;
+
+$form-field-mobile-padding: 12px;
+$form-field-tablet-desktop-padding: 16px;
+$form-field-label-padding: 4px;
+
+$form-field-default-border: 1px solid $Mercury;
+$form-field-active-border: 2px solid $BrainFlix-Blue;
+$form-field-error-border: 1px solid $Form-Error-Border;
+
+// Divider
+$divider-border: 1px solid $Mercury;
+
+// Images
+$image-border-radius: 4px;
+
+// Avatars
+$avatar-border-radius: 50%;
+
+$avatar-mobile-height: 36px;
+$avatar-mobile-width: 36px;
+
+$avatar-tablet-desktop-height: 40px;
+$avatar-tablet-desktop-width: 40px;
