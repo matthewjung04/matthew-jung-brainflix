@@ -1,0 +1,50 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.nav-bar {
+    &__search {
+        background-color: $Alabaster;
+        background-image: url(../../assets/images/icons/search.svg);
+        background-repeat: no-repeat;
+        background-position: 12px, center;
+        
+        width: $form-field-width;
+        height: $form-field-mobile-height;
+
+        border-radius: $form-field-radius;
+        border: $form-field-default-border;
+
+        padding-left: 36px;
+    }
+
+    &__upload {
+        background-color: $BrainFlix-Blue;
+        background-image: url(../../assets/images/icons/upload.svg);
+        background-repeat: no-repeat;
+        background-position: 12px, center;
+
+        width: $button-mobile-width;
+        height: $button-height;
+
+        border-radius: $button-radius;
+        border: none;
+
+        @include mobile-labels-buttons;
+        color: $White;
+    }
+
+    &__image {
+        width: $avatar-mobile-width;
+        height: $avatar-mobile-height;
+
+        border-radius: $avatar-border-radius;
+    }
+
+    @include desktop {
+        &__upload {
+            width: $button-tablet-desktop-width;
+        }
+    }
+}

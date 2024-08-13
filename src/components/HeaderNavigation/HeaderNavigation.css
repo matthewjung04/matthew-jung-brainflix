@@ -1,1 +1,47 @@
-/*# sourceMappingURL=HeaderNavigation.css.map */
+@font-face {
+  font-family: avenir-next-regular;
+  src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: avenir-next-demi;
+  src: url("../../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype");
+}
+@font-face {
+  font-family: avenir-next-bold;
+  src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+}
+.nav-bar__search {
+  background-color: #FAFAFA;
+  background-image: url(../../assets/images/icons/search.svg);
+  background-repeat: no-repeat;
+  background-position: 12px, center;
+  width: 240px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid #E1E1E1;
+  padding-left: 36px;
+}
+.nav-bar__upload {
+  background-color: #0095FF;
+  background-image: url(../../assets/images/icons/upload.svg);
+  background-repeat: no-repeat;
+  background-position: 12px, center;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+  font-family: avenir-next-bold;
+  font-size: 10px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+.nav-bar__image {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+@media (min-width: 1280px) {
+  .nav-bar__upload {
+    width: 150px;
+  }
+}/*# sourceMappingURL=HeaderNavigation.css.map */

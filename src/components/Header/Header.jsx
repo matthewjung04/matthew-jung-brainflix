@@ -1,10 +1,12 @@
 import brainflixLogo from '../../assets/images/logo/BrainFlix-logo.svg'
-import './Header.css'
+import HeaderNavigation from '../HeaderNavigation/HeaderNavigation'
+import './Header.scss'
 
-function Header () {
+function Header() {
     return (
         <header className="header">
             <img src={brainflixLogo} className="header__logo"/>
+            <HeaderNavigation />
         </header>
     )
 }
