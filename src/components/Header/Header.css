@@ -1,0 +1,16 @@
+@font-face {
+  font-family: avenir-next-regular;
+  src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: avenir-next-demi;
+  src: url("../../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype");
+}
+@font-face {
+  font-family: avenir-next-bold;
+  src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+}
+.header__logo {
+  width: 120px;
+  height: 25px;
+}/*# sourceMappingURL=Header.css.map */
