@@ -10,7 +10,19 @@
   font-family: avenir-next-bold;
   src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
 }
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .header__logo {
   width: 120px;
   height: 25px;
-}/*# sourceMappingURL=Header.css.map */
+  padding: 16px;
+}
+.header__nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin: 0 16px;
+}/*# sourceMappingURL=header.css.map */

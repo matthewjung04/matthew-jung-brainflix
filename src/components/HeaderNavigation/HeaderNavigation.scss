@@ -10,7 +10,7 @@
         background-repeat: no-repeat;
         background-position: 12px, center;
         
-        width: $form-field-width;
+        width: 80%;
         height: $form-field-mobile-height;
 
         border-radius: $form-field-radius;
@@ -25,11 +25,13 @@
         background-repeat: no-repeat;
         background-position: 12px, center;
 
-        width: $button-mobile-width;
+        width:120%;
         height: $button-height;
 
         border-radius: $button-radius;
         border: none;
+
+        margin: $mobile-margin 0;
 
         @include mobile-labels-buttons;
         color: $White;
@@ -40,11 +42,7 @@
         height: $avatar-mobile-height;
 
         border-radius: $avatar-border-radius;
-    }
 
-    @include desktop {
-        &__upload {
-            width: $button-tablet-desktop-width;
-        }
+        margin-left: 8px;
     }
 }

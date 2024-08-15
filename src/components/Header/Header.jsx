@@ -6,7 +6,9 @@ function Header() {
     return (
         <header className="header">
             <img src={brainflixLogo} className="header__logo"/>
-            <HeaderNavigation />
+            <section className="header__nav-bar">
+                <HeaderNavigation />
+            </section>
         </header>
     )
 }
