@@ -35,10 +35,18 @@
   font-size: 10px;
   line-height: 20px;
   color: #FFFFFF;
+  cursor: pointer;
+}
+.nav-bar__upload:hover {
+  background-color: #0065AD;
 }
 .nav-bar__image {
   width: 36px;
   height: 36px;
   border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 12%;
+     object-position: 12%;
   margin-left: 8px;
 }/*# sourceMappingURL=HeaderNavigation.css.map */

@@ -35,13 +35,21 @@
 
         @include mobile-labels-buttons;
         color: $White;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: $BrainFlix-DarkBlue;
+        }
     }
 
     &__image {
         width: $avatar-mobile-width;
         height: $avatar-mobile-height;
-
         border-radius: $avatar-border-radius;
+
+        object-fit: cover;
+        object-position: 12%;
 
         margin-left: 8px;
     }

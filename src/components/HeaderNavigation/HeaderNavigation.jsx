@@ -6,7 +6,7 @@ function HeaderNavigation() {
         <>
             <div className="nav-bar">
                 <input type="text" className="nav-bar__search" name="search" placeholder="Search"/>
-                <button className="nav-bar__upload">UPLOAD</button>
+                <button type="button" className="nav-bar__upload">UPLOAD</button>
             </div>
             <img src={avatarImage} className="nav-bar__image"/>
         </>
