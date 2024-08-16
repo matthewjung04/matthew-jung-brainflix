@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import Header from './components/Header/Header'
-import './App.css'
+import NextVideoList from './components/NextVideoList/NextVideoList'
+import './App.scss'
 
 function App() {
   return (
     <>
       <Header />
+      <NextVideoList />
     </>
   )
 }

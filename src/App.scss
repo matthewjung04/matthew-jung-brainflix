@@ -3,7 +3,7 @@
 @use './styles/partials/mixins' as *;
 @use './styles/partials/variables' as *;
 
-body {
+main {
     background-color: $White;
     @include mobile-body;
     margin: 0;
