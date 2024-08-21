@@ -1,0 +1,17 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.video {
+  display: flex;
+  flex-direction: row;
+
+  margin: $mobile-margin;
+
+  &__image {
+    width: 50%;
+    height: 50%;
+    border-radius: $image-border-radius;
+  }
+}
