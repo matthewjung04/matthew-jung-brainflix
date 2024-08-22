@@ -4,6 +4,6 @@
 @use '../../styles/partials/variables' as *;
 
 .main-video {
-  width: 320px;
-  height: 180px;
+  width: 100%;
+  height: 56.25%; // For making video 16:9 aspect ratio
 }

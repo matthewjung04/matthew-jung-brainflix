@@ -2,3 +2,15 @@
 @use '../../styles/partials/fonts' as *;
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/variables' as *;
+
+.next-video {
+  padding-bottom: $mobile-padding;
+  margin: 24px $mobile-margin;
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include mobile-section-header;
+    color: $Silver;
+  }
+}

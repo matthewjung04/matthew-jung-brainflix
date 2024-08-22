@@ -4,22 +4,22 @@
 @use '../../styles/partials/variables' as *;
 
 .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    &__logo {
-        width: 120px;
-        height: 25px;
+	&__logo {
+		width: 120px;
+		height: 25px;
 
-        padding: $mobile-padding;
-    }
+		padding: $mobile-padding;
+	}
 
-    &__nav-bar {
-        display: flex;
-        flex-direction: row;
-        justify-content: left;
+	&__nav-bar {
+		display: flex;
+		flex-direction: row;
+		justify-content: left;
 
-        margin: 0 $mobile-margin;
-    }
+		margin: 0 $mobile-margin;
+	}
 }

@@ -1,8 +1,8 @@
 import './NextVideo.scss'
 
-function NextVideo({image, title, channel}) {
+function NextVideo({id, image, title, channel}) {
   return (
-    <article className="video">
+    <article className="video" id={id}>
       <img className="video__image" src={image}/>
       <div className="video__text">
         <h2 className="video__text__title">{title}</h2>

@@ -7,11 +7,28 @@
   display: flex;
   flex-direction: row;
 
-  margin: $mobile-margin;
+  margin: $mobile-margin 0;
 
   &__image {
-    width: 50%;
-    height: 50%;
+    width: 40%;
+    height: 4rem;
     border-radius: $image-border-radius;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin-left: $mobile-margin;
+    
+    &__title {
+      margin: 0;
+      @include mobile-subheader;
+    }
+
+    &__channel {
+      margin: 0;
+    }
   }
 }

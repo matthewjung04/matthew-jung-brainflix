@@ -4,53 +4,53 @@
 @use '../../styles/partials/variables' as *;
 
 .nav-bar {
-    &__search {
-        background-color: $Alabaster;
-        background-image: url(../../assets/images/icons/search.svg);
-        background-repeat: no-repeat;
-        background-position: 12px, center;
-        
-        width: 80%;
-        height: $form-field-mobile-height;
+	&__search {
+		background-color: $Alabaster;
+		background-image: url(../../assets/images/icons/search.svg);
+		background-repeat: no-repeat;
+		background-position: 12px, center;
+		
+		width: 80%;
+		height: $form-field-mobile-height;
 
-        border-radius: $form-field-radius;
-        border: $form-field-default-border;
+		border-radius: $form-field-radius;
+		border: $form-field-default-border;
 
-        padding-left: 36px;
-    }
+		padding-left: 36px;
+	}
 
-    &__upload {
-        background-color: $BrainFlix-Blue;
-        background-image: url(../../assets/images/icons/upload.svg);
-        background-repeat: no-repeat;
-        background-position: 12px, center;
+	&__upload {
+		background-color: $BrainFlix-Blue;
+		background-image: url(../../assets/images/icons/upload.svg);
+		background-repeat: no-repeat;
+		background-position: 12px, center;
 
-        width:120%;
-        height: $button-height;
+		width:120%;
+		height: $button-height;
 
-        border-radius: $button-radius;
-        border: none;
+		border-radius: $button-radius;
+		border: none;
 
-        margin: $mobile-margin 0;
+		margin: $mobile-margin 0;
 
-        @include mobile-labels-buttons;
-        color: $White;
+		@include mobile-labels-buttons;
+		color: $White;
 
-        cursor: pointer;
+		cursor: pointer;
 
-        &:hover {
-            background-color: $BrainFlix-DarkBlue;
-        }
-    }
+		&:hover {
+			background-color: $BrainFlix-DarkBlue;
+		}
+	}
 
-    &__image {
-        width: $avatar-mobile-width;
-        height: $avatar-mobile-height;
-        border-radius: $avatar-border-radius;
+	&__image {
+		width: $avatar-mobile-width;
+		height: $avatar-mobile-height;
+		border-radius: $avatar-border-radius;
 
-        object-fit: cover;
-        object-position: 12%;
+		object-fit: cover;
+		object-position: 12%;
 
-        margin-left: 8px;
-    }
+		margin-left: 8px;
+	}
 }

@@ -2,7 +2,7 @@ import data from '../../data/video-details.json'
 import './MainVideo.scss'
 
 /* Default main video */
-const defaultVideo = data[1];
+const defaultVideo = data[0];
 
 function MainVideo() {
   return (
