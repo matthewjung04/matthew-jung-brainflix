@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import Header from './components/Header/Header'
-import NextVideoList from './components/NextVideoList/NextVideoList'
 import MainVideo from './components/MainVideo/MainVideo'
+import VideoDetails from './components/VideoDetails/VideoDetails'
+import NextVideoList from './components/NextVideoList/NextVideoList'
+
 import './App.scss'
 
 function App() {
@@ -9,6 +11,7 @@ function App() {
     <>
       <Header />
       <MainVideo />
+      <VideoDetails />
       <NextVideoList />
     </>
   )

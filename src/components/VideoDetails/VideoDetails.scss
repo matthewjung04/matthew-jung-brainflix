@@ -1,0 +1,60 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.details {
+  margin: 0 $mobile-margin;
+
+  &__title {
+    margin: 0;
+    padding: $mobile-padding 0;
+
+    @include mobile-page-header;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    border-top: $divider-border;
+    border-bottom: $divider-border;
+    padding: $mobile-padding 42px $mobile-padding 0;
+
+    &--left {
+      &__channel {
+        font-family: avenir-next-bold;
+        margin: 0;
+        padding-bottom: $mobile-padding;
+      }
+
+      &__date {
+        color: $Silver;
+        margin: 0;
+      }
+    }
+
+    &--right {
+      &__views {
+        @extend .details__box--left__date;
+        padding-bottom: $mobile-padding;
+        
+        display: flex;
+      }
+
+      &__likes {
+        @extend .details__box--left__date;
+        display: flex;
+      }
+
+      &__image {
+        padding-right: 8px;
+      }
+    }
+  }
+
+  &__desc {
+    margin: $mobile-margin 0px;
+  }
+}
