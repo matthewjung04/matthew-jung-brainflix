@@ -13,4 +13,11 @@
     border-left: 48px solid $BrainFlix-DarkBlack;
     border-right: 48px solid $BrainFlix-DarkBlack;
   }
+
+  @include desktop {
+    width: 64%;
+    
+    border-left: 18vw solid $BrainFlix-DarkBlack;
+    border-right: 18vw solid $BrainFlix-DarkBlack;
+  }
 }

@@ -30,4 +30,12 @@
 
 		margin: 16px 0;
 	}
+
+	@include desktop {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+
+		margin: 16px 0;
+	}
 }

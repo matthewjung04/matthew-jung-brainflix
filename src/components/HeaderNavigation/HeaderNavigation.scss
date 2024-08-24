@@ -78,4 +78,30 @@
 			margin: 0;
 		}
 	}
+
+	@include desktop {
+		display: flex;
+		flex-direction: row;
+
+		margin: 0;
+		margin-left: 16px;
+
+		&__search {
+			@include tablet-desktop-body;
+		}
+
+		&__upload {
+			@include tablet-desktop-labels-buttons;
+
+			width: 275px;
+			margin: 0 $tablet-gutter;
+		}
+
+		&__image {
+			width: $avatar-tablet-desktop-width;
+			height: $avatar-tablet-desktop-height;
+
+			margin: 0;
+		}
+	}
 }

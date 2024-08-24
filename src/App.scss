@@ -14,3 +14,17 @@ main {
         @include tablet-desktop-body;
     }
 }
+
+@include desktop {
+    #sub-main {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #content {
+        width: 65%;
+        border-right: $divider-border;
+    }
+
+
+}

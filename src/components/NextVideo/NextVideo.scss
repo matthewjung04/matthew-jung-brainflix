@@ -49,5 +49,21 @@
         @include tablet-desktop-subheader;
       }
     }
-  }  
+  }
+  
+  @include desktop {
+    margin: 24px 0;
+
+    &__image {
+      width: 30%;
+      height: 4.75rem;
+    }
+    &__text {
+      width: 45%;
+
+      &__title {
+        @include tablet-desktop-subheader;
+      }
+    }
+  } 
 }

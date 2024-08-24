@@ -20,4 +20,13 @@
       @include tablet-desktop-subheader; 
     }
   }
+
+  @include desktop {
+    margin: 0 $tablet-desktop-padding;
+    margin-left: 160px;
+
+    &__title {
+      @include tablet-desktop-subheader; 
+    }
+  }
 }

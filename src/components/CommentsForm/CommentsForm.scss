@@ -99,7 +99,46 @@
         &__text {
           @include tablet-desktop-body;
 
-          width: 480px;
+          width: 450px;
+          height: 10px;
+
+          padding: 10px $form-field-tablet-desktop-padding 20px $form-field-tablet-desktop-padding;
+          overflow: hidden;
+        }
+
+        &__button {
+          @include tablet-desktop-labels-buttons;
+          width: 30%;
+
+          margin-left: $tablet-gutter;
+        }
+      }
+    }
+  }
+
+  @include desktop {
+    border: none;
+
+    &__avatar {
+      width: $avatar-tablet-desktop-width;
+      height: $avatar-tablet-desktop-height;
+
+      margin-right: $tablet-gutter;
+    }
+
+    &__form {
+      &__title {
+        @include tablet-desktop-subheader;
+      }
+
+      &__fields {
+        display: flex;
+        flex-direction: row;
+
+        &__text {
+          @include tablet-desktop-body;
+
+          width: 440px;
           height: 10px;
 
           padding: 10px $form-field-tablet-desktop-padding 20px $form-field-tablet-desktop-padding;

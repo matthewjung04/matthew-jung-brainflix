@@ -13,11 +13,11 @@ function App() {
       <Header />
       <MainVideo />
       <section id="sub-main">
-        <VideoDetails />
-        <Comments />
-        <div id="video-list">
-          <NextVideoList />
+        <div id="content">
+          <VideoDetails />
+          <Comments />
         </div>
+        <NextVideoList />
       </section>
 
       

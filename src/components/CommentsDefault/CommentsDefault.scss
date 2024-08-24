@@ -58,4 +58,24 @@
       padding-bottom: 8px;
     }
   }
+
+  @include desktop {
+    width: 106%;
+
+    border-bottom: none;
+    border-top: $divider-border;
+
+    &__avatar {
+      width: $avatar-tablet-desktop-width;
+			height: $avatar-tablet-desktop-height;
+
+      margin-top: 8px;
+    }
+
+    &__box {
+      width: 88%;
+      padding: 8px;
+      padding-right: 24px;
+    }
+  }
 }
