@@ -13,4 +13,14 @@
     @include mobile-section-header;
     color: $Silver;
   }
+
+  @include tablet {
+    margin: $tablet-margin;
+
+    &__title {
+      margin-bottom: $tablet-margin;
+      @include tablet-desktop-subheader;
+    }
+    
+  }
 }

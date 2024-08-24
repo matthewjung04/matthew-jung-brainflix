@@ -41,8 +41,21 @@
         color: $Silver;
         margin: 0;
       }
+    }
+  }
 
+  @include tablet {
+    &__avatar {
+      width: $avatar-tablet-desktop-width;
+			height: $avatar-tablet-desktop-height;
 
+      margin-top: 8px;
+    }
+
+    &__box {
+      width: 90%;
+      padding-top: 8px;
+      padding-bottom: 8px;
     }
   }
 }

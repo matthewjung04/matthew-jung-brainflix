@@ -33,4 +33,21 @@
       margin: 0;
     }
   }
+
+  @include tablet {
+    margin: $tablet-margin 0;
+
+    &__image {
+      width: 20%;
+      height: 5rem;
+    }
+    &__text {
+      width: 28%;
+      padding: 4px;
+
+      &__title {
+        @include tablet-desktop-subheader;
+      }
+    }
+  }  
 }

@@ -12,4 +12,12 @@
     margin: 0;
     padding: 8px 0;
   }
+
+  @include tablet {
+    margin: 0 $tablet-desktop-padding;
+
+    &__title {
+      @include tablet-desktop-subheader; 
+    }
+  }
 }

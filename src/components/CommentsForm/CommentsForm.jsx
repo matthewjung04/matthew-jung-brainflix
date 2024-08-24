@@ -7,9 +7,11 @@ function CommentsForm() {
       <img className="comment__avatar" src={avatarPhoto} alt="avatar-photo"/>
       <form className="comment__form">
         <h1 className="comment__form__title">JOIN THE CONVERSATION</h1>
-        <textarea className="comment__form__text" name="message" rows="5"
-        placeholder="Add a new comment" required></textarea>
-        <button type="button" className="comment__form__button">COMMENT</button>
+        <div className="comment__form__fields">
+          <textarea className="comment__form__fields__text" name="message"
+          placeholder="Add a new comment" required></textarea>
+          <button type="button" className="comment__form__fields__button">COMMENT</button>
+        </div>
       </form>
     </article>
   )

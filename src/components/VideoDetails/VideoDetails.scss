@@ -20,7 +20,7 @@
 
     border-top: $divider-border;
     border-bottom: $divider-border;
-    padding: $mobile-padding 42px $mobile-padding 0;
+    padding: $mobile-padding 40px $mobile-padding 0;
 
     &--left {
       &__channel {
@@ -44,8 +44,7 @@
       }
 
       &__likes {
-        @extend .details__box--left__date;
-        display: flex;
+        @extend .details__box--right__views;
       }
 
       &__image {
@@ -56,5 +55,39 @@
 
   &__desc {
     margin: $mobile-margin 0px;
+  }
+
+  @include tablet {
+    margin: 0 $tablet-margin;
+
+    &__title {
+      @include tablet-desktop-page-header;
+      padding-top: $tablet-desktop-padding;
+      padding-bottom: 0;
+    }
+
+    &__box {
+      border-top: none;
+      padding: 0;
+      padding-top: 8px;
+
+      &--left {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 35%;
+
+        &__channel {
+          @include tablet-desktop-subheader;
+        }
+      }
+
+      &--right {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 28%;
+      }
+    }
   }
 }

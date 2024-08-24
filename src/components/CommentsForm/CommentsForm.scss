@@ -34,44 +34,84 @@
       padding-bottom: 4px;
     }
 
-    &__text {
-      background-color: $Alabaster;
-      width: 88%;
-      
-      margin-bottom: 12px;
-      padding: $form-field-mobile-padding;
-      border-radius: $form-field-radius;
-      border: $form-field-default-border;
-
-      @include mobile-body;
-
-      resize: none;
-
-      &:focus {
-        outline: $form-field-active-border;
+    &__fields {
+      &__text {
+        background-color: $Alabaster;
+        width: 88%;
+        height: 72px;
+        
+        margin-bottom: 12px;
+        padding: $form-field-mobile-padding;
+        border-radius: $form-field-radius;
+        border: $form-field-default-border;
+  
+        @include mobile-body;
+  
+        resize: none;
+  
+        &:focus {
+          outline: $form-field-active-border;
+        }
+      }
+  
+      &__button {
+        background-color: $BrainFlix-Blue;
+        background-image: url(../../assets/images/icons/add_comment.svg);
+        background-repeat: no-repeat;
+        background-position: 12px, center;
+  
+        width: 100%;
+        height: $button-height;
+  
+        border-radius: $button-radius;
+        border: none;
+        margin-bottom: 4px;
+  
+        @include mobile-labels-buttons;
+        color: $White;
+  
+        cursor: pointer;
+  
+        &:hover {
+          background-color: $BrainFlix-DarkBlue;
+        }
       }
     }
+  }
 
-    &__button {
-      background-color: $BrainFlix-Blue;
-      background-image: url(../../assets/images/icons/add_comment.svg);
-      background-repeat: no-repeat;
-      background-position: 12px, center;
+  @include tablet {
+    &__avatar {
+      width: $avatar-tablet-desktop-width;
+      height: $avatar-tablet-desktop-height;
 
-      width: 100%;
-      height: $button-height;
+      margin-right: $tablet-gutter;
+    }
 
-      border-radius: $button-radius;
-      border: none;
-      margin-bottom: 4px;
+    &__form {
+      &__title {
+        @include tablet-desktop-subheader;
+      }
 
-      @include mobile-labels-buttons;
-      color: $White;
+      &__fields {
+        display: flex;
+        flex-direction: row;
 
-      cursor: pointer;
+        &__text {
+          @include tablet-desktop-body;
 
-      &:hover {
-        background-color: $BrainFlix-DarkBlue;
+          width: 480px;
+          height: 10px;
+
+          padding: 10px $form-field-tablet-desktop-padding 20px $form-field-tablet-desktop-padding;
+          overflow: hidden;
+        }
+
+        &__button {
+          @include tablet-desktop-labels-buttons;
+          width: 30%;
+
+          margin-left: $tablet-gutter;
+        }
       }
     }
   }
