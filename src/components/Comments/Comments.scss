@@ -1,0 +1,15 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.comments {
+  padding: 0 $mobile-padding;
+
+  &__title {
+    @include mobile-subheader;
+
+    margin: 0;
+    padding: 8px 0;
+  }
+}

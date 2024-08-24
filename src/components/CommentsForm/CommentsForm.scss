@@ -1,0 +1,78 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.comment {
+  display: flex;
+  flex-direction: row;
+
+  border-bottom: $divider-border;
+  padding: $mobile-padding 0;
+
+  &__avatar {
+    width: $avatar-mobile-width;
+    height: $avatar-mobile-height;
+    border-radius: $avatar-border-radius;
+
+    object-fit: cover;
+    object-position: 12%;
+
+    margin: 24px $mobile-margin 0 0;
+  }
+
+  &__form {
+    width: 100;
+
+    &__title {
+      @include mobile-section-header;
+      color: $Silver;
+
+      width: 100%;
+
+      margin: 0;
+      padding-bottom: 4px;
+    }
+
+    &__text {
+      background-color: $Alabaster;
+      width: 88%;
+      
+      margin-bottom: 12px;
+      padding: $form-field-mobile-padding;
+      border-radius: $form-field-radius;
+      border: $form-field-default-border;
+
+      @include mobile-body;
+
+      resize: none;
+
+      &:focus {
+        outline: $form-field-active-border;
+      }
+    }
+
+    &__button {
+      background-color: $BrainFlix-Blue;
+      background-image: url(../../assets/images/icons/add_comment.svg);
+      background-repeat: no-repeat;
+      background-position: 12px, center;
+
+      width: 100%;
+      height: $button-height;
+
+      border-radius: $button-radius;
+      border: none;
+      margin-bottom: 4px;
+
+      @include mobile-labels-buttons;
+      color: $White;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: $BrainFlix-DarkBlue;
+      }
+    }
+  }
+}

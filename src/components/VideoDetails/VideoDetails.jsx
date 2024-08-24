@@ -8,9 +8,7 @@ const defaultVideo = data[0];
 
 /* Convert timestamp into mm/dd/yyyy date format */
 const newDate = new Date(defaultVideo.timestamp);
-const month = ("0" + (newDate.getMonth()+1)).slice(-2);
-const date = ("0" + newDate.getDate()).slice(-2);
-const year = newDate.getFullYear();
+const localDate = newDate.toLocaleDateString();
 
 function VideoDetails() {
   return (
@@ -21,11 +19,7 @@ function VideoDetails() {
           <p className="details__box--left__channel">
             {"By " + defaultVideo.channel}
           </p>
-          <p className="details__box--left__date">
-            {
-              month + "/" + date + "/" + year
-            }
-          </p>
+          <p className="details__box--left__date">{localDate}</p>
         </div>
         <div className="details__box--right">
           <p className="details__box--right__views">

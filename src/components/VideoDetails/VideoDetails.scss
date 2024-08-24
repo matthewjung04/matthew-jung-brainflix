@@ -24,7 +24,7 @@
 
     &--left {
       &__channel {
-        font-family: avenir-next-bold;
+        @include mobile-subheader;
         margin: 0;
         padding-bottom: $mobile-padding;
       }

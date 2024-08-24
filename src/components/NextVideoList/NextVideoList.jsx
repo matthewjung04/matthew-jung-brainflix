@@ -9,7 +9,7 @@ function NextVideoList() {
   return (
     <section className="next-video">
       <h1 className="next-video__title">NEXT VIDEO</h1>
-      <article className="next-video__list">
+      <article>
         {
           videoData.map((video) => (
             <NextVideo

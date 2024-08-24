@@ -5,7 +5,7 @@ import './Header.scss'
 function Header() {
 	return (
 		<header className="header">
-			<img src={brainflixLogo} className="header__logo"/>
+			<img src={brainflixLogo} className="header__logo" alt="avatar-image"/>
 			<section className="header__nav-bar">
 				<HeaderNavigation />
 			</section>

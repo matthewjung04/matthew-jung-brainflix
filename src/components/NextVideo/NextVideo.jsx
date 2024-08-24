@@ -2,13 +2,13 @@ import './NextVideo.scss'
 
 function NextVideo({id, image, title, channel}) {
   return (
-    <article className="video" id={id}>
+    <div className="video" id={id}>
       <img className="video__image" src={image}/>
       <div className="video__text">
         <h2 className="video__text__title">{title}</h2>
         <p className="video__text__channel">{channel}</p>
       </div>
-    </article>
+    </div>
   )
 }
 

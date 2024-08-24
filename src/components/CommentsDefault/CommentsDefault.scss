@@ -1,0 +1,48 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.default-comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding-top: $mobile-padding;
+  border-bottom: $divider-border;
+
+  &__avatar {
+    background-color: $Mercury;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+  }
+
+  &__box {
+    width: 82%;
+
+    &__title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      margin: 0;
+
+      &__name {
+        @include mobile-subheader;
+        margin: 0;
+      }
+
+      &__time {
+        @include mobile-body;
+        color: $Silver;
+        margin: 0;
+      }
+
+
+    }
+  }
+}
