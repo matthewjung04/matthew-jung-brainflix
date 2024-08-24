@@ -9,7 +9,7 @@
     }
 }
 
-// Desktop: Defined at 1280px, but applied to size greater than 1279px
+// Desktop: Defined at 1280px, but applied to size greater than 1280px
 @mixin desktop {
     @media (min-width:$desktop-min-width) {
         @content;

@@ -22,4 +22,12 @@
 
 		margin: 0 $mobile-margin;
 	}
+
+	@include tablet {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+
+		margin: 16px 0;
+	}
 }

@@ -4,6 +4,11 @@
 @use '../../styles/partials/variables' as *;
 
 .main-video {
-  width: 100%;
+  width: 87%;
   height: 56.25%; // For making video 16:9 aspect ratio
+
+  @include tablet {
+    border-left: 48px solid $BrainFlix-DarkBlack;
+    border-right: 48px solid $BrainFlix-DarkBlack;
+  }
 }
