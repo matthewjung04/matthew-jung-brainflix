@@ -11,7 +11,6 @@ function App() {
   let [currentVideo, setCurrentVideo] = useState(data[0]);
   let [videoList, setVideoList] = useState(data.slice(1));
   
-  console.log(typeof videoList)
   const clickhandler = (event) => {
     const targetID = event.target.parentElement.id
     const newVideo = data.filter((video) => video.id==targetID)
