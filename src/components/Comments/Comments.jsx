@@ -3,18 +3,6 @@ import CommentsDefault from '../CommentsDefault/CommentsDefault';
 import CommentsForm from '../CommentsForm/CommentsForm';
 import './Comments.scss'
 
-// /* Extract comments for main video */
-// const defaultComments = media.comments;
-
-// /* Number of comments posted */
-// const commentCounter = defaultComments.length;
-
-// /* Function for converting timestamp into mm/dd/yyyy format */
-// const convertTime = (time) => {
-//   const newDate = new Date(time);
-//   return newDate.toLocaleDateString();
-// }
-
 function Comments({media}) {
   /* Extract comments for main video */
   const defaultComments = media.comments;
