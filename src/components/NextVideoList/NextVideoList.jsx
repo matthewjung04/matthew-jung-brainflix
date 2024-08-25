@@ -1,7 +1,7 @@
 import NextVideo from '../NextVideo/NextVideo'
 import './NextVideoList.scss'
 
-function NextVideoList({media}) {
+function NextVideoList({media, click}) {
   return (
     <section className="next-video">
       <h1 className="next-video__title">NEXT VIDEO</h1>
@@ -14,6 +14,7 @@ function NextVideoList({media}) {
               image={video.image}
               title={video.title}
               channel={video.channel}
+              clicked={click}
             />
           ))
         }
