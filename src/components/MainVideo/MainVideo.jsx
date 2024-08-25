@@ -1,13 +1,9 @@
-import data from '../../data/video-details.json'
 import './MainVideo.scss'
 
-/* Default main video */
-const defaultVideo = data[0];
-
-function MainVideo() {
+function MainVideo({media}) {
   return (
-    <video className="main-video" poster={defaultVideo.image} controls>
-      <source src={defaultVideo.video} />
+    <video className="main-video" poster={media.image} controls>
+      <source src={media.video} />
     </video>
   )
 }

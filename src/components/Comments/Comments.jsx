@@ -1,21 +1,33 @@
-import data from '../../data/video-details.json'
+// import data from '../../data/video-details.json'
 import CommentsDefault from '../CommentsDefault/CommentsDefault';
 import CommentsForm from '../CommentsForm/CommentsForm';
 import './Comments.scss'
 
-/* Extract comments for main video */
-const defaultComments = data[0].comments;
+// /* Extract comments for main video */
+// const defaultComments = media.comments;
 
-/* Number of comments posted */
-const commentCounter = defaultComments.length;
+// /* Number of comments posted */
+// const commentCounter = defaultComments.length;
 
-/* Function for converting timestamp into mm/dd/yyyy format */
-const convertTime = (time) => {
-  const newDate = new Date(time);
-  return newDate.toLocaleDateString();
-}
+// /* Function for converting timestamp into mm/dd/yyyy format */
+// const convertTime = (time) => {
+//   const newDate = new Date(time);
+//   return newDate.toLocaleDateString();
+// }
 
-function Comments() {
+function Comments({media}) {
+  /* Extract comments for main video */
+  const defaultComments = media.comments;
+
+  /* Number of comments posted */
+  const commentCounter = defaultComments.length;
+
+  /* Function for converting timestamp into mm/dd/yyyy format */
+  const convertTime = (time) => {
+    const newDate = new Date(time);
+    return newDate.toLocaleDateString();
+  }
+
   return (
     <section className="comments">
       <h2 className="comments__title">
