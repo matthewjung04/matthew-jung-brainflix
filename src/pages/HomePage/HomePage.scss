@@ -1,0 +1,28 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+main {
+    background-color: $White;
+    @include mobile-body;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    @media (min-width: $tablet-min-width) {
+        @include tablet-desktop-body;
+    }
+}
+
+@include desktop {
+    #sub-main {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #content {
+        width: 65%;
+        border-right: $divider-border;
+    }
+}
