@@ -4,11 +4,8 @@ import CommentsForm from '../CommentsForm/CommentsForm';
 import './Comments.scss'
 
 function Comments({media}) {
-  /* Extract comments for main video */
-  const defaultComments = media.comments;
-
   /* Number of comments posted */
-  const commentCounter = defaultComments.length;
+  const commentCounter = media.length;
 
   /* Function for converting timestamp into mm/dd/yyyy format */
   const convertTime = (time) => {
@@ -24,7 +21,7 @@ function Comments({media}) {
       <CommentsForm />
       <article>
         {
-          defaultComments.map((post) => (
+          media.map((post) => (
             <CommentsDefault
             key={post.id}
             id={post.id}
