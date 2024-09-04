@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import NextVideo from '../NextVideo/NextVideo'
 import './NextVideoList.scss'
 
@@ -8,14 +9,17 @@ function NextVideoList({media, click}) {
       <article>
         {
           media.map((video) => (
-            <NextVideo
+            <Link to={`/videos/${video.id}`} id="video-link" key={video.id}>
+              <NextVideo
               key={video.id}
               id = {video.id}
               image={video.image}
               title={video.title}
               channel={video.channel}
               // clicked={click}
-            />
+              />
+            </Link>
+
           ))
         }
       </article>

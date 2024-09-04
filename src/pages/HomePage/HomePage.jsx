@@ -11,16 +11,22 @@ import './HomePage.scss'
 
 function HomePage() {
   /* Add dynamic route for each currentVideo based on currentVideo id */
-  const { videoID } = useParams();
+  const { videoId } = useParams();
 
   /* Create dynamic state variables for main currentVideo and next currentVideo details */
   let [currentVideo, setCurrentVideo] = useState({});
   let [videoList, setVideoList] = useState([]);
-  // let [videoId, setVideoId] = useState(0);
+  let [data, setData] = useState([]);
   let [videoComments, setVideoComments] = useState([]);
 
-  const video = data.find((currentVideo) => currentVideo.id === videoID);
-
+  const fetchData = async () => {
+    const videoData = await axios.get(url+ 'videos' + apiKey);
+    setData(data=videoData.data);
+  }
+  fetchData();
+  
+  const video = data.find((currentVideo) => currentVideo.id === videoId);
+ 
   /* Event handler for changing main currentVideo to next currentVideo when clicked */
   // const clickhandler = (event) => {
   //   setVideoId(videoId = event.target.parentElement.id)
@@ -34,24 +40,27 @@ function HomePage() {
 
   /* UseEffect function for using axios to collect data from API */
   useEffect(() => {
-    const fetchData = async ()=> {
+    const fetchVideo = async ()=> {
       const videos = await axios.get(url+ 'videos' + apiKey);
       const nextVideoList = videos.data;
       
       if(video == undefined) {
         const currentId = nextVideoList[0].id;
-      
         const currentData = await axios.get(url + 'videos/' + currentId + apiKey);
         
         setCurrentVideo(currentVideo=currentData.data)
         setVideoComments(videoComments=currentData.data.comments)
         setVideoList(videoList=nextVideoList.slice(1));
       }
+      // else {
+        
+        
+      // }
     }
 
-    fetchData();
+    fetchVideo();
 
-  }, [videoID])
+  }, [videoId])
   
   return (
     <>
