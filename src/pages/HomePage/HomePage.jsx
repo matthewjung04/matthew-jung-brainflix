@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { url, apiKey} from '../../utils/utils.jsx'
-import data from '../../data/video-details.json'
 import MainVideo from '../../components/MainVideo/MainVideo'
 import VideoDetails from '../../components/VideoDetails/VideoDetails'
 import Comments from '../../components/Comments/Comments'
@@ -23,45 +22,35 @@ function HomePage() {
     const videoData = await axios.get(url+ 'videos' + apiKey);
     setData(data=videoData.data);
   }
-  fetchData();
+  useEffect(() => {fetchData()},[]);
   
+  // console.log(data)
   const video = data.find((currentVideo) => currentVideo.id === videoId);
- 
-  /* Event handler for changing main currentVideo to next currentVideo when clicked */
-  // const clickhandler = (event) => {
-  //   setVideoId(videoId = event.target.parentElement.id)
-  //   // const targetID = event.target.parentElement.id
-  //   // const newVideo = data.filter((currentVideo) => currentVideo.id==targetID)
-  //   // const index = videoList.indexOf(newVideo[0])
-  //   // videoList[index]=currentVideo
-  //   // setCurrentVideo(currentVideo=newVideo[0])
-  // }
-  // console.log(videoId);
-
+  
   /* UseEffect function for using axios to collect data from API */
   useEffect(() => {
     const fetchVideo = async ()=> {
       const videos = await axios.get(url+ 'videos' + apiKey);
       const nextVideoList = videos.data;
-      
-      if(video == undefined) {
-        const currentId = nextVideoList[0].id;
-        const currentData = await axios.get(url + 'videos/' + currentId + apiKey);
+      const defaultList = nextVideoList.slice(1);
+      // console.log(videoId)
+      if(!videoId) {
+        const defaultId = nextVideoList[0].id;
+        const currentData = await axios.get(url + 'videos/' + defaultId + apiKey);
         
         setCurrentVideo(currentVideo=currentData.data)
         setVideoComments(videoComments=currentData.data.comments)
-        setVideoList(videoList=nextVideoList.slice(1));
+        setVideoList(videoList=defaultList);
       }
-      // else {
-        
-        
-      // }
+      else {
+        const mainVideo = await axios.get(url + 'videos/' + videoId + apiKey);
+        setCurrentVideo(currentVideo=mainVideo.data);
+        setVideoComments(videoComments=mainVideo.data.comments)
+      }
     }
-
     fetchVideo();
-
   }, [videoId])
-  
+
   return (
     <>
       <MainVideo 
@@ -78,7 +67,6 @@ function HomePage() {
         </div>
         <NextVideoList
           media={videoList}
-          // click={clickhandler}
         />
       </section>
     </>
