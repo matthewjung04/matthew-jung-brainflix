@@ -15,35 +15,42 @@ function HomePage() {
   /* Create dynamic state variables for main currentVideo and next currentVideo details */
   let [currentVideo, setCurrentVideo] = useState({});
   let [videoList, setVideoList] = useState([]);
-  let [data, setData] = useState([]);
+  // let [data, setData] = useState([]);
   let [videoComments, setVideoComments] = useState([]);
 
   const fetchData = async () => {
-    const videoData = await axios.get(url+ 'videos' + apiKey);
-    setData(data=videoData.data);
+    await axios
+      .get(`${url}videos${apiKey}`)
+      .then((response) => {
+        const data = response.data;
+      })
   }
   useEffect(() => {fetchData()},[]);
-  
-  // console.log(data)
+
   const video = data.find((currentVideo) => currentVideo.id === videoId);
-  
+
+
   /* UseEffect function for using axios to collect data from API */
   useEffect(() => {
     const fetchVideo = async ()=> {
-      const videos = await axios.get(url+ 'videos' + apiKey);
-      const nextVideoList = videos.data;
-      const defaultList = nextVideoList.slice(1);
+      // const videos = await axios.get(url+ 'videos' + apiKey);
+      // const nextVideoList = videos.data;
+      // const defaultList = nextVideoList.slice(1);
       // console.log(videoId)
       if(!videoId) {
-        const defaultId = nextVideoList[0].id;
-        const currentData = await axios.get(url + 'videos/' + defaultId + apiKey);
-        
-        setCurrentVideo(currentVideo=currentData.data)
-        setVideoComments(videoComments=currentData.data.comments)
-        setVideoList(videoList=defaultList);
+        fetchData();
+        console.log(fetchData())
+        console.log(data)
+        // await axios
+        //   .get(`${url}videos/${data[0].id+apiKey}`)
+        //   .then((response) => {
+        //     setCurrentVideo(currentVideo=response.data)
+        //     setVideoComments(videoComments=response.data.comments)
+        //     setVideoList(videoList=data.slice(1))
+        //   })
       }
       else {
-        const mainVideo = await axios.get(url + 'videos/' + videoId + apiKey);
+        const mainVideo = await axios.get(`${url}videos/${videoId+apiKey}`);
         setCurrentVideo(currentVideo=mainVideo.data);
         setVideoComments(videoComments=mainVideo.data.comments)
       }
