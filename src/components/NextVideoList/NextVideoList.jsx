@@ -16,6 +16,7 @@ function NextVideoList({media, click}) {
               image={video.image}
               title={video.title}
               channel={video.channel}
+              clicked={click}
               />
             </Link>
 
