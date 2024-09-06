@@ -7,8 +7,8 @@ import './Header.scss'
 function Header() {
 	return (
 		<header className="header">
-			{/* BrainFlix Logo */}
-			<Link to="/">
+			{/* BrainFlix Logo */ }
+			<Link to="/" reloadDocument>
 				{/* Cliking on logo redirects to homepage */}
 				<img src={brainflixLogo} className="header__logo" alt="avatar-image"/>
 			</Link>
