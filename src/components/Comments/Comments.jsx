@@ -19,10 +19,12 @@ function Comments({media}) {
         {commentCounter + " Comments"}
       </h2>
       <CommentsForm />
-      <article>
-        {
-          media.map((post) => (
-            <CommentsDefault
+      <article> 
+        {/* Generate list of comments based on comment data from API */}
+        {/* Initially only default comments but list is updated when new comment is posted */}
+        { 
+          media.map((post) => ( 
+            <CommentsDefault 
             key={post.id}
             id={post.id}
             name={post.name}

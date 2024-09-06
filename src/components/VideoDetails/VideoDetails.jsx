@@ -9,19 +9,24 @@ function VideoDetails({media}) {
 
   return (
     <section className="details">
+      {/* Video title */}
       <h1 className="details__title">{media.title}</h1>
       <article className="details__box">
         <div className="details__box--left">
+          {/* Video author */}
           <p className="details__box--left__channel">
             {"By " + media.channel}
           </p>
+          {/* Video upload date */}
           <p className="details__box--left__date">{localDate}</p>
         </div>
         <div className="details__box--right">
+          {/* Number of views */}
           <p className="details__box--right__views">
             <img className="details__box--right__image" src={viewsIcon}/>
             {media.views}
           </p>
+          {/* Number of likes */}
           <p className="details__box--right__likes">
             <img className="details__box--right__image" src={likesIcon}/>
             {media.likes}

@@ -1,5 +1,6 @@
 import './CommentsDefault.scss'
 
+/* Lists the default comments and updates when new comment is posted */
 function CommentsDefault({id, name, comment, timestamp}) {
   return (
     <div className="default-comment" id={id}>

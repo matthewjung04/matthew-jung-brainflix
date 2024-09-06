@@ -8,8 +8,9 @@ import './App.scss'
 function App() {
   return (
     <>
+      {/* set up router paths for homePage, uploaPage, and videoDetailsPage */}
       <BrowserRouter>
-        <Header />
+        <Header /> {/* Header component is the same for all routes/pages */}
         <Routes>
           {/* Create routes to homepage and uploadpage */}
           <Route path="/" element={<HomePage />}/>

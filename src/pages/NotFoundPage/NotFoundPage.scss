@@ -1,0 +1,19 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/variables' as *;
+
+#not-found-heading {
+  @include mobile-page-header;
+
+  @media (min-width: $tablet-min-width) {
+    @include tablet-desktop-page-header
+  }
+}
+
+#not-found-subheading {
+  @include mobile-subheader;
+
+  @media (min-width: $tablet-min-width) {
+    @include tablet-desktop-subheader
+  }
+}

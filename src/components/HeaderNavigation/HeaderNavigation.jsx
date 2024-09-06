@@ -6,8 +6,10 @@ function HeaderNavigation() {
 	return (
 		<>
 			<div className="nav-bar">
+				{/* Currently search bar has no functionality */}
 				<input type="text" className="nav-bar__search" name="search" placeholder="Search"/>
-	
+
+				{/* Clicking upload button redirects to uploadpage */}
 				<Link to="/upload">
 					<button type="button" className="nav-bar__upload">UPLOAD</button>
 				</Link>
