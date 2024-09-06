@@ -33,7 +33,7 @@ function HomePage() {
 
         setIsLoading(isLoading=true)
       }
-      if(isLoading) {
+      if(isLoading && videoId !== 0) {
         const mainVideo = await axios.get(`${url}videos/${videoId + apiKey}`)
         const index = videoList.findIndex(video => video.id == mainVideo.data.id)
         videoList[index] = currentVideo
