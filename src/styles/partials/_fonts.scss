@@ -1,20 +1,15 @@
 // Import Font Files
+
 // Avenir Next Regular - 400
 @font-face {
     font-family: avenir-next-regular;
-    src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
-}
-
-// Avenir Next Demi - 600
-@font-face {
-    font-family: avenir-next-demi;
-    src: url("../../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype");
+    src: url("./assets/fonts/AvenirNextLTPro.ttf") format('truetype');
 }
 
 // Avenir Next Bold - 700
 @font-face {
     font-family: avenir-next-bold;
-    src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+    src: url("./assets/fonts/AvenirNextLTProBold.ttf") format('truetype');
 }
 
 // Mobile Text Styles
