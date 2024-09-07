@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import { useState } from "react";
 import videoThumbnail from '../../assets/images/Upload-video-preview.jpg'
 import './UploadPage.scss'
 
 function UploadPage() {
+let [hasSubmit, setHasSubmit] = useState(false);
 
   /* SubmitHandler adds submit functionality to publihs button */
-  
   const formHanlder = (e) => {
     e.preventDefault()
     const title = e.target.title.value;
@@ -14,6 +15,7 @@ function UploadPage() {
     /* Successfully submits form if all fields are filled in*/
     if(title && description) {
       alert(`${title} has been successfully submitted!`)
+      setHasSubmit(hasSubmit = true)
     }
 
     /* Returns error if any field is left blank */
@@ -27,6 +29,9 @@ function UploadPage() {
       alert('All fields must be filled in')
     }
   }
+
+  /* Redirects to hompage if upload form has been successfully submitted */
+  if(hasSubmit){return <Navigate to="/"/>}
 
   /* Resets the error border when empty field is filled */
   const inputHandler = (e) => {
