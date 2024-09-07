@@ -80,6 +80,7 @@
     &__buttons {
       display: flex;
       flex-direction: column;
+
       &__publish {
         background-color: $BrainFlix-Blue;
         background-image: url(../../assets/images/icons/publish.svg);
@@ -113,10 +114,78 @@
         margin-bottom: 32px;
         align-self: center;
       }
-      
     }
-
-
   }
 
+  @include tablet {
+    &__header {
+    
+      margin: $tablet-margin;
+      margin-bottom: 0;
+      padding-bottom: $tablet-desktop-headline-padding-top;
+      border-bottom: $divider-border;
+  
+      @include tablet-desktop-page-header;
+    }
+
+    &__form {
+      
+      &__fields {
+        
+        margin: $tablet-margin;
+        margin-bottom: 0;
+        padding-bottom: 36px;
+        border-bottom: $divider-border;
+
+        &__thumbnail {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 8px;
+
+          &__label {
+            @include tablet-desktop-subheader;
+            color: $Silver;
+          }
+  
+          &__image {
+            margin-top: 8px;
+            width: 40vw;
+          }
+        }
+
+        &__inputs {
+          
+          &__label {
+            @include tablet-desktop-subheader;
+            color: $Silver;
+      
+            width: 100%;
+            margin-top: 16px;
+            padding-bottom: 8px;
+          }
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        flex-direction: row-reverse;
+
+        &__publish {
+          @include tablet-desktop-labels-buttons;
+
+          width: 220px;
+          margin-top: $tablet-gutter;
+          margin-right: $tablet-margin
+        }
+
+        &__cancel {
+          @include tablet-desktop-labels-buttons;
+
+          padding-top: 8px;
+          margin-top: $tablet-gutter;
+          margin-right: 80px;
+        }
+      }
+    }
+  }
 }
