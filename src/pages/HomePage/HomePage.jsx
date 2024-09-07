@@ -17,11 +17,16 @@ function HomePage() {
   /* Create dynamic state variable for checking whether the homepage has loaded or not */
   let [isLoading, setIsLoading] = useState(false);
 
+  /* commentId which changes everytime specific comment is deleted */
+  let [commentId, setCommentId] = useState(0);
+  /* Create dynamic state variable for checking whether a comment has been selected or not */
+  let [selected, setSelected] = useState(false);
+
   /* ClickHandler extracts the id of the video clicked but does not trigger any changes*/
   const clickHandler = (event) => {
     setVideoId(videoId=event.target.parentElement.id);
   }
- 
+
   /* UseEffect triggers when videoId is updated by clickHandler */
   useEffect(() => {
     const fetchVideo = async ()=> {
@@ -37,6 +42,7 @@ function HomePage() {
             setVideoList(videoList=videoData.data.slice(1))
           })
           .then(() => { /* Only change isLoading to true afte all states have been updated */
+            setVideoId(videoId=videoData.data[0].id)
             setIsLoading(isLoading=true)
           })
         ;
@@ -57,6 +63,33 @@ function HomePage() {
     fetchVideo();
   }, [videoId]) /* This useEffect only runs when videoId is updated by clickHandler */
   
+  /* Extracts id of deleted comment */
+  const deleteHandler = (e) => {
+    setCommentId(commentId=e.target.id);
+    setSelected(selected=true);
+  }
+
+  /* UseEffect triggers when commentId is updated by clickHandler */
+  useEffect(() => {
+    const deleteComment = async () => {
+      if(selected) {
+        await axios.delete(`${url}videos/${videoId}/comments/${commentId + apiKey}`);
+
+        await axios
+          .get(`${url}videos/${videoId + apiKey}`)
+          .then((response) => { 
+          const index = videoList.findIndex(video => video.id == response.data.id)
+          setVideoComments(videoComments=response.data.comments)
+        }); 
+      } 
+      else {
+        return
+      }
+    }
+    deleteComment();
+  },[commentId])
+
+
   return (
     <>
       {/* MainVideo generates the main video using currentVideo as its prop */}
@@ -72,6 +105,7 @@ function HomePage() {
           {/* Comments generates the comments of the main video using videoComponents as its prop */}
           <Comments
             media={videoComments}
+            click={deleteHandler}
           />
         </div>
         {/* NextVideoList uses videoList prop to generate the next video list 

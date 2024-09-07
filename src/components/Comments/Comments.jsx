@@ -1,11 +1,10 @@
-// import data from '../../data/video-details.json'
 import CommentsDefault from '../CommentsDefault/CommentsDefault';
 import CommentsForm from '../CommentsForm/CommentsForm';
 import './Comments.scss'
 
-function Comments({media}) {
+function Comments({media, click}) {
   /* Number of comments posted */
-  const commentCounter = media.length;
+  const counter = media.length;
 
   /* Function for converting timestamp into mm/dd/yyyy format */
   const convertTime = (time) => {
@@ -16,7 +15,7 @@ function Comments({media}) {
   return (
     <section className="comments">
       <h2 className="comments__title">
-        {commentCounter + " Comments"}
+        {counter + " Comments"}
       </h2>
       <CommentsForm />
       <article> 
@@ -30,6 +29,7 @@ function Comments({media}) {
             name={post.name}
             comment={post.comment}
             timestamp={convertTime(post.timestamp)}
+            deleted={click}
             />
           ))
         }
