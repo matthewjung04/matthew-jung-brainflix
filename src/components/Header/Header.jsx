@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import brainflixLogo from '../../assets/images/logo/BrainFlix-logo.svg'
 import HeaderNavigation from '../HeaderNavigation/HeaderNavigation'
 import './Header.scss'

@@ -24,12 +24,11 @@
   &__form {
     width: 100;
 
-    &__title {
+    &__label {
       @include mobile-section-header;
       color: $Silver;
 
       width: 100%;
-
       margin: 0;
       padding-bottom: 4px;
     }
@@ -46,7 +45,6 @@
         border: $form-field-default-border;
   
         @include mobile-body;
-  
         resize: none;
   
         &:focus {
@@ -88,7 +86,7 @@
     }
 
     &__form {
-      &__title {
+      &__label {
         @include tablet-desktop-subheader;
       }
 
@@ -127,7 +125,7 @@
     }
 
     &__form {
-      &__title {
+      &__label {
         @include tablet-desktop-subheader;
       }
 

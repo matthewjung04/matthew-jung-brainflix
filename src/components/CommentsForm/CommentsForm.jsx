@@ -6,7 +6,11 @@ function CommentsForm() {
     <article className="comment">
       <img className="comment__avatar" src={avatarPhoto} alt="avatar-photo"/>
       <form className="comment__form">
-        <h1 className="comment__form__title">JOIN THE CONVERSATION</h1>
+        <label
+          className="comment__form__label"
+          htmlFor="message"
+          >JOIN THE CONVERSATION
+        </label>
         <div className="comment__form__fields">
           <textarea className="comment__form__fields__text" name="message"
           placeholder="Add a new comment" required></textarea>
