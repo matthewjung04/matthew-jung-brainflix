@@ -269,3 +269,8 @@
     }
   }
 }
+
+/* For when upload form returns and error message */
+.error {
+  border: 1px solid $Form-Error-Border;
+}
