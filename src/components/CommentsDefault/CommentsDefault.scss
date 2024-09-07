@@ -42,6 +42,19 @@
         margin: 0;
       }
     }
+
+    &__delete {
+      background-color: $White;
+      background-image: url(../../assets/images/icons/delete.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      width: 1vw;
+      height: 3vh;
+
+      border: none;
+      cursor: pointer;
+    }
   }
 
   @include tablet {

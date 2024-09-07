@@ -88,12 +88,13 @@
 
 		&__search {
 			@include tablet-desktop-body;
+			margin-left: 48px;
 		}
 
 		&__upload {
 			@include tablet-desktop-labels-buttons;
 
-			width: 275px;
+			width: 200px;
 			margin: 0 $tablet-gutter;
 		}
 

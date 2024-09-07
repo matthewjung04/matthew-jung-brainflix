@@ -1,0 +1,276 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.uploads-page {
+
+  &__header {
+    
+    margin: $mobile-margin;
+    padding: 4px 0;
+
+    @include mobile-page-header;
+  }
+
+  &__form {
+
+    &__fields {
+      margin: $mobile-margin;
+
+      &__thumbnail {
+
+        &__label {
+          @include mobile-section-header;
+          color: $Silver;
+        }
+
+        &__image {
+          margin-top: 4px;
+          width: 90vw;
+        }
+      }
+
+      &__inputs {
+        display: flex;
+        flex-direction: column;
+
+        &__label {
+          @include mobile-section-header;
+          color: $Silver;
+    
+          width: 100%;
+          margin-top: $mobile-margin;
+          padding-bottom: 4px;
+        }
+
+        &__text {
+          background-color: $Alabaster;
+  
+          padding: $form-field-mobile-padding;
+          border-radius: $form-field-radius;
+          border: $form-field-default-border;
+
+          @include mobile-body;
+          resize: none;
+    
+          &:focus {
+            outline: $form-field-active-border;
+          }
+        }
+
+        &__textbox {
+          background-color: $Alabaster;
+          height: 72px;
+
+          padding: $form-field-mobile-padding;
+          border-radius: $form-field-radius;
+          border: $form-field-default-border;
+
+          @include mobile-body;
+          resize: none;
+    
+          &:focus {
+            outline: $form-field-active-border;
+          }
+        }
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+
+      &__publish {
+        background-color: $BrainFlix-Blue;
+        background-image: url(../../assets/images/icons/publish.svg);
+        background-repeat: no-repeat;
+        background-position: 12px, center;
+
+        width:85vw;
+        height: $button-height;
+    
+        border-radius: $button-radius;
+        border: none;
+    
+        margin: $mobile-margin;
+    
+        @include mobile-labels-buttons;
+        color: $White;
+    
+        cursor: pointer;
+    
+        &:hover {
+          background-color: $BrainFlix-DarkBlue;
+        }
+      }
+
+      &__cancel {
+        @include mobile-subheader;
+        color: $BrainFlix-Blue;
+        text-decoration: none;
+
+        margin-top: $mobile-margin;
+        margin-bottom: 32px;
+        align-self: center;
+      }
+    }
+  }
+
+  @include tablet {
+    &__header {
+    
+      margin: $tablet-margin;
+      margin-bottom: 0;
+      padding-bottom: $tablet-desktop-headline-padding-top;
+      border-bottom: $divider-border;
+  
+      @include tablet-desktop-page-header;
+    }
+
+    &__form {
+      
+      &__fields {
+        
+        margin: $tablet-margin;
+        margin-bottom: 0;
+        padding-bottom: 36px;
+        border-bottom: $divider-border;
+
+        &__thumbnail {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 8px;
+
+          &__label {
+            @include tablet-desktop-subheader;
+            color: $Silver;
+          }
+  
+          &__image {
+            margin-top: 8px;
+            width: 40vw;
+          }
+        }
+
+        &__inputs {
+          
+          &__label {
+            @include tablet-desktop-subheader;
+            color: $Silver;
+      
+            width: 100%;
+            margin-top: 16px;
+            padding-bottom: 8px;
+          }
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        flex-direction: row-reverse;
+
+        &__publish {
+          @include tablet-desktop-labels-buttons;
+
+          width: 220px;
+          margin-top: $tablet-gutter;
+          margin-right: $tablet-margin;
+        }
+
+        &__cancel {
+          @include tablet-desktop-labels-buttons;
+
+          padding-top: 8px;
+          margin-top: $tablet-gutter;
+          margin-right: 80px;
+        }
+      }
+    }
+  }
+
+  @include desktop {
+    &__header {
+    
+      margin: $tablet-margin 190px;
+      margin-bottom: 0;
+      padding-bottom: $tablet-desktop-headline-padding-top;
+      border-bottom: $divider-border;
+  
+      @include tablet-desktop-page-header;
+    }
+
+    &__form {
+      
+      &__fields {
+        display: flex;
+        flex-direction: row;
+
+        margin: $tablet-margin 190px;
+        margin-bottom: 0;
+        padding-bottom: 36px;
+        border-bottom: $divider-border;
+
+        &__thumbnail {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 8px;
+
+          &__label {
+            @include tablet-desktop-subheader;
+            color: $Silver;
+          }
+  
+          &__image {
+            margin-top: 8px;
+            width: 30vw;
+          }
+        }
+
+        &__inputs {
+          width: 100%;
+          margin-left: $desktop-gutter;
+      
+          &__label {
+            @include tablet-desktop-subheader;
+            color: $Silver;
+      
+            width: 100%;
+            margin: 0;
+            padding-bottom: 8px;
+          }
+
+          &__text {
+            margin-bottom: 30px;
+          }
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        flex-direction: row-reverse;
+
+        &__publish {
+          @include tablet-desktop-labels-buttons;
+
+          width: 220px;
+          margin-top: $desktop-gutter;
+          margin-right: 190px;
+        }
+
+        &__cancel {
+          @include tablet-desktop-labels-buttons;
+
+          padding-top: 8px;
+          margin-top: $tablet-gutter;
+          margin-right: 80px;
+        }
+      }
+    }
+  }
+}
+
+/* For when upload form returns an error message */
+.error {
+  border: 1px solid $Form-Error-Border;
+}

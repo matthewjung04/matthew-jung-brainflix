@@ -3,6 +3,11 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/variables' as *;
 
+#video-link {
+  color: $BrainFlix-Black;
+  text-decoration: none;
+}
+
 .next-video {
   padding-bottom: $mobile-padding;
   margin: 24px $mobile-margin;
