@@ -2,7 +2,7 @@ import CommentsDefault from '../CommentsDefault/CommentsDefault';
 import CommentsForm from '../CommentsForm/CommentsForm';
 import './Comments.scss'
 
-function Comments({media, click}) {
+function Comments({media, deleted, posted}) {
   /* Number of comments posted */
   const counter = media.length;
 
@@ -17,7 +17,9 @@ function Comments({media, click}) {
       <h2 className="comments__title">
         {counter + " Comments"}
       </h2>
-      <CommentsForm />
+      <CommentsForm
+        submitted={posted} 
+      />
       <article> 
         {/* Generate list of comments based on comment data from API */}
         {/* Initially only default comments but list is updated when new comment is posted */}
@@ -29,7 +31,7 @@ function Comments({media, click}) {
             name={post.name}
             comment={post.comment}
             timestamp={convertTime(post.timestamp)}
-            deleted={click}
+            del={deleted}
             />
           ))
         }

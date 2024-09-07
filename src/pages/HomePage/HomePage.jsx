@@ -22,6 +22,11 @@ function HomePage() {
   /* Create dynamic state variable for checking whether a comment has been selected or not */
   let [selected, setSelected] = useState(false);
 
+  /* postedComment which stores the most recently posted comment */
+  let [postedComment, setPostedComment] = useState("");
+  /* Create dynamic state variable for checking whether a comment has been posted or not */
+  let [hasPosted, setHasPosted] = useState(false);
+
   /* ClickHandler extracts the id of the video clicked but does not trigger any changes*/
   const clickHandler = (event) => {
     setVideoId(videoId=event.target.parentElement.id);
@@ -69,7 +74,7 @@ function HomePage() {
     setSelected(selected=true);
   }
 
-  /* UseEffect triggers when commentId is updated by clickHandler */
+  /* UseEffect triggers when commentId is updated by deleteHandler */
   useEffect(() => {
     const deleteComment = async () => {
       if(selected) {
@@ -81,6 +86,7 @@ function HomePage() {
           const index = videoList.findIndex(video => video.id == response.data.id)
           setVideoComments(videoComments=response.data.comments)
         }); 
+        ;
       } 
       else {
         return
@@ -89,6 +95,43 @@ function HomePage() {
     deleteComment();
   },[commentId])
 
+  /* Extracts posted comment from user input */
+  const postHandler = (e) => {
+    e.preventDefault()
+    const message = e.target.message.value;
+
+    if(!message) {
+      const messageInput = e.target.querySelector('textarea');
+      messageInput.classList.add('empty-comment');
+      alert('All fields must be filled in')
+    } else if (message) {
+      setPostedComment(postedComment=message);
+      setHasPosted(hasPosted=true);
+    }
+  }
+
+  /* UseEffect triggers when postedComment is updated by postHandler */
+  useEffect (() => {
+    const postComment = async () => {
+      if(hasPosted) {
+        await axios.post(
+          (`${url}videos/${videoId}/comments${apiKey}`),
+          {"name": "Matthew Jung", "comment": postedComment}
+        )
+  
+        await axios
+          .get(`${url}videos/${videoId + apiKey}`)
+          .then((response) => { 
+            const index = videoList.findIndex(video => video.id == response.data.id)
+            setVideoComments(videoComments=response.data.comments)
+          }); 
+        ;
+      } else {
+        return
+      }
+    }
+    postComment();
+  },[postedComment])
 
   return (
     <>
@@ -105,7 +148,8 @@ function HomePage() {
           {/* Comments generates the comments of the main video using videoComponents as its prop */}
           <Comments
             media={videoComments}
-            click={deleteHandler}
+            deleted={deleteHandler}
+            posted={postHandler}
           />
         </div>
         {/* NextVideoList uses videoList prop to generate the next video list 

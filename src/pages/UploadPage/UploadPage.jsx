@@ -23,8 +23,8 @@ let [hasSubmit, setHasSubmit] = useState(false);
       const titleInput = e.target.querySelector('input');
       const descriptionInput = e.target.querySelector('textarea');
       
-      if(!title) { titleInput.classList.add('error') }
-      if(!description) { descriptionInput.classList.add('error') }
+      if(!title) { titleInput.classList.add('error') };
+      if(!description) { descriptionInput.classList.add('error') };
 
       alert('All fields must be filled in')
     }

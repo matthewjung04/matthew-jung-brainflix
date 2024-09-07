@@ -153,3 +153,8 @@
     }
   }
 }
+
+/* For when posting comments return an error message */
+.empty-comment {
+  border: 1px solid $Form-Error-Border;
+}
