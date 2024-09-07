@@ -175,7 +175,87 @@
 
           width: 220px;
           margin-top: $tablet-gutter;
-          margin-right: $tablet-margin
+          margin-right: $tablet-margin;
+        }
+
+        &__cancel {
+          @include tablet-desktop-labels-buttons;
+
+          padding-top: 8px;
+          margin-top: $tablet-gutter;
+          margin-right: 80px;
+        }
+      }
+    }
+  }
+
+  @include desktop {
+    &__header {
+    
+      margin: $tablet-margin 190px;
+      margin-bottom: 0;
+      padding-bottom: $tablet-desktop-headline-padding-top;
+      border-bottom: $divider-border;
+  
+      @include tablet-desktop-page-header;
+    }
+
+    &__form {
+      
+      &__fields {
+        display: flex;
+        flex-direction: row;
+
+        margin: $tablet-margin 190px;
+        margin-bottom: 0;
+        padding-bottom: 36px;
+        border-bottom: $divider-border;
+
+        &__thumbnail {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 8px;
+
+          &__label {
+            @include tablet-desktop-subheader;
+            color: $Silver;
+          }
+  
+          &__image {
+            margin-top: 8px;
+            width: 30vw;
+          }
+        }
+
+        &__inputs {
+          width: 100%;
+          margin-left: $desktop-gutter;
+      
+          &__label {
+            @include tablet-desktop-subheader;
+            color: $Silver;
+      
+            width: 100%;
+            margin: 0;
+            padding-bottom: 8px;
+          }
+
+          &__text {
+            margin-bottom: 30px;
+          }
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        flex-direction: row-reverse;
+
+        &__publish {
+          @include tablet-desktop-labels-buttons;
+
+          width: 220px;
+          margin-top: $desktop-gutter;
+          margin-right: 190px;
         }
 
         &__cancel {
