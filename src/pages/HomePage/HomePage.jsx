@@ -113,7 +113,7 @@ function HomePage() {
   /* UseEffect triggers when postedComment is updated by postHandler */
   useEffect (() => {
     const postComment = async () => {
-      if(hasPosted) {
+      if(hasPosted && postedComment !== "") {
         await axios.post(
           (`${url}videos/${videoId}/comments${apiKey}`),
           {"name": "Matthew Jung", "comment": postedComment}
@@ -124,7 +124,10 @@ function HomePage() {
           .then((response) => { 
             const index = videoList.findIndex(video => video.id == response.data.id)
             setVideoComments(videoComments=response.data.comments)
-          }); 
+          })
+          .then(()=> {
+            setPostedComment(postedComment = "")
+          }) 
         ;
       } else {
         return
