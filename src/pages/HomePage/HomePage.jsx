@@ -43,8 +43,11 @@ function HomePage() {
           .get(`${url}videos/${videoData.data[0].id + apiKey}`) /* Extracts video details of default video */
           .then((response) => { /* Wait for get request to be complete before updating states */
             setCurrentVideo(currentVideo=response.data)
-            setVideoComments(videoComments=response.data.comments)
             setVideoList(videoList=videoData.data.slice(1))
+
+            const newComments = response.data.comments;
+            newComments.sort((a,b) => {return b.timestamp-a.timestamp});
+            setVideoComments(videoComments=newComments);
           })
           .then(() => { /* Only change isLoading to true afte all states have been updated */
             setVideoId(videoId=videoData.data[0].id)
@@ -60,7 +63,10 @@ function HomePage() {
             videoList[index] = currentVideo
 
             setCurrentVideo(currentVideo=response.data)
-            setVideoComments(videoComments=response.data.comments)
+            
+            const newComments = response.data.comments;
+            newComments.sort((a,b) => {return b.timestamp-a.timestamp});
+            setVideoComments(videoComments=newComments);
           })
         ;
       }
@@ -83,8 +89,9 @@ function HomePage() {
         await axios
           .get(`${url}videos/${videoId + apiKey}`)
           .then((response) => { 
-          const index = videoList.findIndex(video => video.id == response.data.id)
-          setVideoComments(videoComments=response.data.comments)
+            const newComments = response.data.comments;
+            newComments.sort((a,b) => {return b.timestamp-a.timestamp});
+            setVideoComments(videoComments=newComments);
         }); 
         ;
       } 
@@ -122,8 +129,9 @@ function HomePage() {
         await axios
           .get(`${url}videos/${videoId + apiKey}`)
           .then((response) => { 
-            const index = videoList.findIndex(video => video.id == response.data.id)
-            setVideoComments(videoComments=response.data.comments)
+            const newComments = response.data.comments;
+            newComments.sort((a,b) => {return b.timestamp-a.timestamp});
+            setVideoComments(videoComments=newComments);
           })
           .then(()=> {
             setPostedComment(postedComment = "")
