@@ -1,3 +1,4 @@
+import moment from 'moment'
 import viewsIcon from '../../assets/images/icons/views.svg'
 import likesIcon from '../../assets/images/icons/likes.svg'
 import './VideoDetails.scss'
@@ -5,7 +6,7 @@ import './VideoDetails.scss'
 function VideoDetails({media}) {
   /* Convert timestamp into mm/dd/yyyy date format */
   const newDate = new Date(media.timestamp);
-  const localDate = newDate.toLocaleDateString();
+  const localDate = moment(newDate).fromNow();
 
   return (
     <section className="details">
