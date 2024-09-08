@@ -1,3 +1,4 @@
+import moment from 'moment'
 import CommentsDefault from '../CommentsDefault/CommentsDefault';
 import CommentsForm from '../CommentsForm/CommentsForm';
 import './Comments.scss'
@@ -11,6 +12,12 @@ function Comments({media, deleted, posted}) {
     const newDate = new Date(time);
     return newDate.toLocaleDateString();
   }
+
+  function dynamicDates(postTime) {
+    return moment(postTime).fromNow();
+  }
+  setInterval(dynamicDates, 1000)
+  
 
   return (
     <section className="comments">
@@ -30,7 +37,7 @@ function Comments({media, deleted, posted}) {
             id={post.id}
             name={post.name}
             comment={post.comment}
-            timestamp={convertTime(post.timestamp)}
+            timestamp={dynamicDates(new Date(post.timestamp))}
             del={deleted}
             />
           ))
