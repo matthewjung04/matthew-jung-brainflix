@@ -4,15 +4,16 @@ import videoThumbnail from '../../assets/images/Upload-video-preview.jpg'
 import './UploadPage.scss'
 
 function UploadPage() {
-let [hasSubmit, setHasSubmit] = useState(false);
-
+  let [thumbnail, setThumbnail] = useState(videoThumbnail)
+  let [hasSubmit, setHasSubmit] = useState(false);
+ 
   /* SubmitHandler adds submit functionality to publihs button */
   const formHanlder = (e) => {
     e.preventDefault()
     const title = e.target.title.value;
     const description = e.target.description.value;
 
-    /* Successfully submits form if all fields are filled in*/
+    /* Successfully submits form if all fields are filled in */
     if(title && description) {
       alert(`${title} has been successfully submitted!`)
       setHasSubmit(hasSubmit = true)
@@ -27,6 +28,24 @@ let [hasSubmit, setHasSubmit] = useState(false);
       if(!description) { descriptionInput.classList.add('error') };
 
       alert('All fields must be filled in')
+    }
+  }
+
+  /* Reads image filepath and writes as image file source  */
+  const reader = new FileReader();
+
+  /* Changes images source and preview based on uploaded image file */
+  const loadHandler = (e) => {
+    if (e.type === "load") {
+      setThumbnail(thumbnail=reader.result);
+    }
+  }
+
+  const fileHandler = (e) => {
+    reader.addEventListener("load", loadHandler);
+
+    if(e.target.files[0]){
+      reader.readAsDataURL(e.target.files[0])
     }
   }
 
@@ -50,11 +69,20 @@ let [hasSubmit, setHasSubmit] = useState(false);
         
         {/* Upload video thumnail photo */}
         <div className="uploads-page__form__fields__thumbnail">
-          <label className="uploads-page__form__fields__thumbnail__label">
-            VIDEO THUMBNAIL
-          </label>
+          <div className="uploads-page__form__fields__thumbnail__upload">
+            <label 
+              className="uploads-page__form__fields__thumbnail__upload__label"
+              htmlFor="imageFile"
+              >VIDEO THUMBNAIL
+            </label>
+            <input
+              className="uploads-page__form__fields__thumbnail__upload__file"
+              type="file" name="imageFile"
+              onChange={fileHandler} accept="image/*"
+            />
+          </div>
           <img
-            src={videoThumbnail} 
+            src={thumbnail} 
             className="uploads-page__form__fields__thumbnail__image"
             alt="upload-image"
           />

@@ -5,8 +5,6 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Header from "./components/Header/Header";
 import './App.scss'
 
-const baseURL = import.meta.env.VITE_API_URL;
-
 function App() {
   return (
     <>

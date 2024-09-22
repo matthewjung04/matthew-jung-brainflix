@@ -20,9 +20,16 @@
 
       &__thumbnail {
 
-        &__label {
-          @include mobile-section-header;
-          color: $Silver;
+        &__upload {
+
+          &__label {
+            @include mobile-section-header;
+            color: $Silver;
+          }
+
+          &__file {
+            margin-left: 8px;
+          }
         }
 
         &__image {

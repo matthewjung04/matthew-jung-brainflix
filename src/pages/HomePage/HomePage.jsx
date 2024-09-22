@@ -32,15 +32,18 @@ function HomePage() {
     setVideoId(videoId=event.target.parentElement.id);
   }
 
+  /* URL of backend API */
+  const baseURL = import.meta.env.VITE_API_URL;
+  
   /* UseEffect triggers when videoId is updated by clickHandler */
   useEffect(() => {
     const fetchVideo = async ()=> {
       /* Extracts list of all videos in API data */
-      const videoData = await axios.get(url+ 'videos' + apiKey);
+      const videoData = await axios.get(baseURL+ '/videos');
       
       if(!isLoading) { /* Only runs when isLoading is false or in default state */
         await axios
-          .get(`${url}videos/${videoData.data[0].id + apiKey}`) /* Extracts video details of default video */
+          .get(`${baseURL}/videos/${videoData.data[0].id}`) /* Extracts video details of default video */
           .then((response) => { /* Wait for get request to be complete before updating states */
             setCurrentVideo(currentVideo=response.data)
             setVideoList(videoList=videoData.data.slice(1))
@@ -57,7 +60,7 @@ function HomePage() {
       }
       if(isLoading && videoId !== 0) { /* Only runs when isLoading is true and videoId contains id value */
         await axios
-          .get(`${url}videos/${videoId + apiKey}`) /* get specific video data based on id of 'clicked' video */
+          .get(`${baseURL}/videos/${videoId}`) /* get specific video data based on id of 'clicked' video */
           .then((response) => { /* Only update page when get request is complete */
             const index = videoList.findIndex(video => video.id == response.data.id)
             videoList[index] = currentVideo
