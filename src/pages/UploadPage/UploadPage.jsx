@@ -1,31 +1,40 @@
 import { Link, Navigate } from 'react-router-dom'
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { baseURL } from '../../utils/utils';
+import axios from 'axios';
 import videoThumbnail from '../../assets/images/Upload-video-preview.jpg'
 import './UploadPage.scss'
 
 function UploadPage() {
+  let [title, setTitle] = useState("")
+  let [description, setDescription] = useState("")
   let [thumbnail, setThumbnail] = useState(videoThumbnail)
   let [hasSubmit, setHasSubmit] = useState(false);
  
-  /* SubmitHandler adds submit functionality to publihs button */
+  /* URL of backend API */
+  const baseURL = import.meta.env.VITE_API_URL;
+ 
+  /* SubmitHandler adds submit functionality to publish button */
   const formHanlder = (e) => {
     e.preventDefault()
-    const title = e.target.title.value;
-    const description = e.target.description.value;
+    const videoTitle = e.target.title.value;
+    const videoDescription = e.target.description.value;
 
     /* Successfully submits form if all fields are filled in */
-    if(title && description) {
-      alert(`${title} has been successfully submitted!`)
+    if(videoTitle && videoDescription) {
+      alert(`${videoTitle} has been successfully submitted!`)
+      setTitle(title=videoTitle)
+      setDescription(description=videoDescription)
       setHasSubmit(hasSubmit = true)
     }
 
     /* Returns error if any field is left blank */
-    else if (!title || !description) {
+    else if (!videoTitle || !videoDescription) {
       const titleInput = e.target.querySelector('input');
       const descriptionInput = e.target.querySelector('textarea');
       
-      if(!title) { titleInput.classList.add('error') };
-      if(!description) { descriptionInput.classList.add('error') };
+      if(!videoTitle) { titleInput.classList.add('error') };
+      if(!videoDescription) { descriptionInput.classList.add('error') };
 
       alert('All fields must be filled in')
     }
@@ -49,9 +58,6 @@ function UploadPage() {
     }
   }
 
-  /* Redirects to hompage if upload form has been successfully submitted */
-  if(hasSubmit){return <Navigate to="/"/>}
-
   /* Resets the error border when empty field is filled */
   const inputHandler = (e) => {
     const errorClass = e.target.className;
@@ -60,7 +66,21 @@ function UploadPage() {
     }
   }
 
-  /* Currently uploads page has partial functionality for submit and cancel button links */
+  useEffect(()=> {
+    const postVideo = async () => {
+      if(hasSubmit) {
+        await axios.post(
+          (`${baseURL}/videos`),
+          {title: title, image: thumbnail, description: description}
+        )
+      }
+    }
+    postVideo();
+  },[hasSubmit])
+
+  /* Redirects to hompage if upload form has been successfully submitted */
+  if(hasSubmit){return <Navigate to="/"/>}
+
   return (
   <>
     <h1 className="uploads-page__header">Upload Video</h1>
@@ -91,7 +111,7 @@ function UploadPage() {
         {/* Form input fields */}
         <div className="uploads-page__form__fields__inputs">
 
-          {/* Input video title */}
+          {/* Input video videoTitle */}
           <label 
             className="uploads-page__form__fields__inputs__label"
             htmlFor="title"
@@ -101,10 +121,10 @@ function UploadPage() {
             type="text" name="title"
             onKeyDown={inputHandler}
             className="uploads-page__form__fields__inputs__text" 
-            placeholder="Add a title to your video"
+            placeholder="Add a videoTitle to your video"
           />
 
-          {/* Input video description */}
+          {/* Input video videoDescription */}
           <label
             className="uploads-page__form__fields__inputs__label"
             htmlFor="description"
@@ -114,18 +134,16 @@ function UploadPage() {
             name="description"
             onKeyDown={inputHandler}
             className="uploads-page__form__fields__inputs__textbox"
-            placeholder="Add a description to your video">
+            placeholder="Add a videoDescription to your video">
           </textarea>
         </div>
       </article>
 
       {/* Submit button and 'cancel' link */}
       <article className="uploads-page__form__buttons">
-        {/* Alerts sucess of submission and redirects to hompage */}
         <button type="submit" className="uploads-page__form__buttons__publish">
           PUBLISH
         </button>
-        {/* Redirects to hompage */}
         <Link to="/" className="uploads-page__form__buttons__cancel" reloadDocument>
           CANCEL
         </Link>

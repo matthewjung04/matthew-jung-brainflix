@@ -1,4 +1,4 @@
-import moment from 'moment'
+import { dynamicDates } from '../../utils/utils';
 import viewsIcon from '../../assets/images/icons/views.svg'
 import likesIcon from '../../assets/images/icons/likes.svg'
 import './VideoDetails.scss'
@@ -6,7 +6,7 @@ import './VideoDetails.scss'
 function VideoDetails({media}) {
   /* Convert timestamp into mm/dd/yyyy date format */
   const newDate = new Date(media.timestamp);
-  const localDate = moment(newDate).fromNow();
+  const localDate = dynamicDates(newDate);
 
   return (
     <section className="details">
