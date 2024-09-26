@@ -7,7 +7,8 @@ import Header from "./components/Header/Header";
 import './App.scss'
 
 function App() {
-  
+  let [uploaded, setUploaded] = useState(false);
+
   return (
     <>
       {/* set up router paths for homePage, uploaPage, and videoDetailsPage */}
@@ -15,8 +16,8 @@ function App() {
         <Header /> {/* Header component is the same for all routes/pages */}
         <Routes>
           {/* Create routes to homepage and uploadpage */}
-          <Route path="/" element={<HomePage />}/>
-          <Route path="/upload" element={<UploadPage />}/>
+          <Route path="/" element={<HomePage state={uploaded} setState={setUploaded}/>}/>
+          <Route path="/upload" element={<UploadPage state={uploaded} setState={setUploaded}/>}/>
           {/* Create dynamic route for video details page */}
           <Route path="/videos" element={<HomePage />}/> {/* Not actually used */}
           <Route path="/videos/:id" element={<HomePage />}/>
