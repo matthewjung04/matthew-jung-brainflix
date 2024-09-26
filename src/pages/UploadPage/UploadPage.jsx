@@ -1,4 +1,4 @@
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import { baseURL } from '../../utils/utils';
 import axios from 'axios';
@@ -10,6 +10,8 @@ function UploadPage() {
   let [description, setDescription] = useState("")
   let [thumbnail, setThumbnail] = useState(videoThumbnail)
   let [hasSubmit, setHasSubmit] = useState(false)
+  let [hasUploaded, setHasUploaded] = useState(false)
+  const navigate = useNavigate();
  
   /* URL of backend API */
   const baseURL = import.meta.env.VITE_API_URL;
@@ -72,6 +74,8 @@ function UploadPage() {
         await axios.post(
           (`${baseURL}/videos`),
           {title: title, image: thumbnail, description: description}
+        ).then(
+          navigate('/')
         )
       }
     }
@@ -79,8 +83,7 @@ function UploadPage() {
   },[hasSubmit])
 
   /* Redirects to hompage if upload form has been successfully submitted */
-  // if(hasSubmit){ return <Navigate to="/"/> }
-
+  
   return (
   <>
     <h1 className="uploads-page__header">Upload Video</h1>
@@ -124,7 +127,7 @@ function UploadPage() {
             placeholder="Add a videoTitle to your video"
           />
 
-          {/* Input video videoDescription */}
+          {/* Input video video Description */}
           <label
             className="uploads-page__form__fields__inputs__label"
             htmlFor="description"
@@ -141,9 +144,9 @@ function UploadPage() {
 
       {/* Submit button and 'cancel' link */}
       <article className="uploads-page__form__buttons">
-        <button type="submit" className="uploads-page__form__buttons__publish">
-          PUBLISH
-        </button>
+          <button type="submit" className="uploads-page__form__buttons__publish">
+            PUBLISH
+          </button>
 
         <Link to="/" className="uploads-page__form__buttons__cancel" reloadDocument>
           CANCEL
