@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from 'react'
 import HomePage from "./pages/HomePage/HomePage";
 import UploadPage from "./pages/UploadPage/UploadPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
@@ -6,6 +7,7 @@ import Header from "./components/Header/Header";
 import './App.scss'
 
 function App() {
+  
   return (
     <>
       {/* set up router paths for homePage, uploaPage, and videoDetailsPage */}

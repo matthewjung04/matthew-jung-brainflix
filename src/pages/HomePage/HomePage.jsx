@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, Navigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { url, apiKey, baseURL, getVideoAPI} from '../../utils/utils.jsx'
 import MainVideo from '../../components/MainVideo/MainVideo'
@@ -10,6 +10,7 @@ import './HomePage.scss'
 
 function HomePage() {
   let [currentVideo, setCurrentVideo] = useState({});
+  let [videoData, setVideoData] = useState([]);
   let [videoList, setVideoList] = useState([]);
   let [videoComments, setVideoComments] = useState([]);
   let [videoId, setVideoId] = useState(0);
@@ -17,25 +18,40 @@ function HomePage() {
   let [selected, setSelected] = useState(false);
   let [postedComment, setPostedComment] = useState("");
   let [hasPosted, setHasPosted] = useState(false);
-  // console.log(videoList)
+
   /* ClickHandler extracts the id of the video clicked but does not trigger any changes*/
   const clickHandler = (event) => {
     setVideoId(videoId=event.target.parentElement.id);
   }
 
   const {id} = useParams();
-  if(videoId==0 && id){setVideoId(videoId=id)}
-
+  if(videoId==0 && id){
+    setVideoId(videoId=id)
+  }
+  
   /* UseEffect triggers when videoId is updated by clickHandler */
   useEffect(() => {
     const fetchVideo = async ()=> {
       /* Extracts list of all videos in API data */
-      const videoData = await axios.get(baseURL+ '/videos');
+      
+      await axios
+        .get(`${baseURL}/videos`)
+        .then((response) => {
+          setVideoData(videoData=response)
+        })
+   
+      if(videoId == 0 && !id) {
+        
+        await axios
+        .get(`${baseURL}/videos`)
+        .then((response) => {
+          setVideoData(videoData=response)
+        })
 
-      if(videoId == 0) {
         getVideoAPI(videoData.data[0].id, setCurrentVideo, setVideoComments);
-        setVideoList(videoList=videoData.data.slice(1));
         setVideoId(videoId=videoData.data[0].id);
+
+        setVideoList(videoList=videoData.data.slice(1));
 
       } else if(videoId !== 0) {
         getVideoAPI(videoId, setCurrentVideo, setVideoComments)
@@ -52,7 +68,8 @@ function HomePage() {
       }
     }
     fetchVideo();
-  }, [videoId]) /* This useEffect only runs when videoId is updated by clickHandler */
+    
+  }, [videoId])
   
   /* Extracts id of deleted comment */
   const deleteHandler = (e) => {
