@@ -1,6 +1,5 @@
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
-import { baseURL } from '../../utils/utils';
 import axios from 'axios';
 import videoThumbnail from '../../assets/images/Upload-video-preview.jpg'
 import './UploadPage.scss'
@@ -10,7 +9,7 @@ function UploadPage() {
   let [description, setDescription] = useState("")
   let [thumbnail, setThumbnail] = useState(videoThumbnail)
   let [hasSubmit, setHasSubmit] = useState(false)
-  let [hasUploaded, setHasUploaded] = useState(false)
+
   const navigate = useNavigate();
  
   /* URL of backend API */
@@ -18,7 +17,6 @@ function UploadPage() {
  
   /* SubmitHandler adds submit functionality to publish button */
   const formHanlder = (e) => {
-    // e.preventDefault()
     const videoTitle = e.target.title.value;
     const videoDescription = e.target.description.value;
 
@@ -75,14 +73,12 @@ function UploadPage() {
           (`${baseURL}/videos`),
           {title: title, image: thumbnail, description: description}
         ).then(
-          navigate('/')
+          navigate('/home')
         )
       }
     }
     postVideo();
   },[hasSubmit])
-
-  /* Redirects to hompage if upload form has been successfully submitted */
   
   return (
   <>

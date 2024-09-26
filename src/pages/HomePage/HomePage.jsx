@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { url, apiKey, baseURL, getVideoAPI} from '../../utils/utils.jsx'
 import MainVideo from '../../components/MainVideo/MainVideo'
