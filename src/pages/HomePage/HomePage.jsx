@@ -93,21 +93,19 @@ function HomePage() {
             (`${baseURL}/videos/${videoId}/comments`),
             {"name": "BrainStation", "comment": postedComment}
           )
+          .then((response) => {
+            const newComments = videoComments;
+            newComments.unshift(response.data)
+            setVideoComments(videoComments=newComments)
+          })
           .then(
-            await axios
-            .get(`${baseURL}/videos/${videoId}`)
-            .then((response) => { 
-              const newComments = response.data.comments;
-              newComments.sort((a,b) => {return b.timestamp-a.timestamp});
-              setVideoComments(videoComments=newComments);
-              setPostedComment(postedComment = "")
-            })
+            setPostedComment(postedComment = "")
           )
       } 
     }
     postComment();
   },[postedComment])
-
+  
   /* Extracts id of deleted comment */
   const deleteHandler = (e) => {
     setCommentId(commentId=e.target.id);
@@ -118,20 +116,17 @@ function HomePage() {
   useEffect(() => {
     const deleteComment = async () => {
       if(selected) {
-        await axios.delete(`${url}videos/${videoId}/comments/${commentId + apiKey}`);
+        await axios.delete(`${baseURL}/videos/${videoId}/comments/${commentId}`);
 
         await axios
           .get(`${url}videos/${videoId + apiKey}`)
-          .then((response) => { 
+          .then((response) => {
             const newComments = response.data.comments;
             newComments.sort((a,b) => {return b.timestamp-a.timestamp});
             setVideoComments(videoComments=newComments);
         }); 
         ;
       } 
-      else {
-        return
-      }
     }
     deleteComment();
   },[commentId])

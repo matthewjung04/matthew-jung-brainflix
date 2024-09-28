@@ -6,7 +6,6 @@ import './Comments.scss'
 function Comments({media, deleted, posted}) {
   /* Number of comments posted */
   const counter = media.length;
-
   setInterval(dynamicDates, 1000)
   
   return (
