@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { url, apiKey, baseURL, getVideoAPI} from '../../utils/utils.jsx'
 import MainVideo from '../../components/MainVideo/MainVideo'
@@ -17,7 +17,6 @@ function HomePage() {
   let [commentId, setCommentId] = useState(0);
   let [selected, setSelected] = useState(false);
   let [postedComment, setPostedComment] = useState("");
-  let [hasPosted, setHasPosted] = useState(false);
 
   /* ClickHandler extracts the id of the video clicked but does not trigger any changes*/
   const clickHandler = (event) => {
@@ -71,6 +70,44 @@ function HomePage() {
     
   }, [videoId])
   
+  /* Extracts posted comment from user input */
+  const postHandler = (e) => {
+    e.preventDefault()
+    const message = e.target.message.value;
+
+    if(!message) {
+      const messageInput = e.target.querySelector('textarea');
+      messageInput.classList.add('empty-comment');
+      alert('All fields must be filled in')
+    } else if (message) {
+      setPostedComment(postedComment=message);
+    }
+  }
+
+  /* UseEffect triggers when postedComment is updated by postHandler */
+  useEffect (() => {
+    const postComment = async () => {
+      if(postedComment !== "") {
+        await axios
+          .post(
+            (`${baseURL}/videos/${videoId}/comments`),
+            {"name": "BrainStation", "comment": postedComment}
+          )
+          .then(
+            await axios
+            .get(`${baseURL}/videos/${videoId}`)
+            .then((response) => { 
+              const newComments = response.data.comments;
+              newComments.sort((a,b) => {return b.timestamp-a.timestamp});
+              setVideoComments(videoComments=newComments);
+              setPostedComment(postedComment = "")
+            })
+          )
+      } 
+    }
+    postComment();
+  },[postedComment])
+
   /* Extracts id of deleted comment */
   const deleteHandler = (e) => {
     setCommentId(commentId=e.target.id);
@@ -98,48 +135,6 @@ function HomePage() {
     }
     deleteComment();
   },[commentId])
-
-  /* Extracts posted comment from user input */
-  const postHandler = (e) => {
-    e.preventDefault()
-    const message = e.target.message.value;
-
-    if(!message) {
-      const messageInput = e.target.querySelector('textarea');
-      messageInput.classList.add('empty-comment');
-      alert('All fields must be filled in')
-    } else if (message) {
-      setPostedComment(postedComment=message);
-      setHasPosted(hasPosted=true);
-    }
-  }
-
-  /* UseEffect triggers when postedComment is updated by postHandler */
-  useEffect (() => {
-    const postComment = async () => {
-      if(hasPosted && postedComment !== "") {
-        await axios.post(
-          (`${url}videos/${videoId}/comments${apiKey}`),
-          {"name": "BrainStation", "comment": postedComment}
-        )
-  
-        await axios
-          .get(`${url}videos/${videoId + apiKey}`)
-          .then((response) => { 
-            const newComments = response.data.comments;
-            newComments.sort((a,b) => {return b.timestamp-a.timestamp});
-            setVideoComments(videoComments=newComments);
-          })
-          .then(()=> {
-            setPostedComment(postedComment = "")
-          }) 
-        ;
-      } else {
-        return
-      }
-    }
-    postComment();
-  },[postedComment])
 
   return (
     <>

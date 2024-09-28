@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import { baseURL } from '../../utils/utils';
 import videoThumbnail from '../../assets/images/Upload-video-preview.jpg'
 import './UploadPage.scss'
 
@@ -11,9 +12,6 @@ function UploadPage() {
   let [hasSubmit, setHasSubmit] = useState(false)
 
   const navigate = useNavigate();
- 
-  /* URL of backend API */
-  const baseURL = import.meta.env.VITE_API_URL;
  
   /* SubmitHandler adds submit functionality to publish button */
   const formHanlder = (e) => {
