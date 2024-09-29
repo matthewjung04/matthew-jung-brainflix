@@ -6,9 +6,7 @@ function MainVideo({media}) {
 
   return (
     <video className="main-video" src={media.video}
-    poster={media.image} 
-    
-    controls>
+    poster={media.image} controls>
     </video>
   )
 }
