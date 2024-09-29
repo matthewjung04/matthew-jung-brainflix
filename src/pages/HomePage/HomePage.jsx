@@ -17,12 +17,15 @@ function HomePage() {
   let [commentId, setCommentId] = useState(0);
   let [selected, setSelected] = useState(false);
   let [postedComment, setPostedComment] = useState("");
+  let [hasLike, setHasLike] = useState(false);
   
   /* React States for double checking axios reponses */
   let [newData, setNewData] = useState({});
   let [updatedData, setUpdatedData] = useState({});
   let [deleteData, setDeleteData] = useState({});
   let [updatedDeleteData, setUpdatedDeleteData] = useState({});
+  let [likes, setLikes] = useState({});
+  let [updatedLikes, setUpdatedLikes] = useState({});
 
   /* ClickHandler extracts the id of the video clicked but does not trigger any changes*/
   const clickHandler = (event) => {
@@ -135,12 +138,39 @@ function HomePage() {
     deleteComment();
   },[commentId])
 
+  /* Secondary check before deleting comment */
   useEffect(() => {
     setUpdatedDeleteData(updatedDeleteData=deleteData);
     const deletedId = updatedDeleteData.id;
     const deleteIndex = videoComments.findIndex(deleted => deleted.id == deletedId)
     videoComments.splice(deleteIndex,1)
   },[deleteData])
+
+  /* Trigger like button */
+  const likeHandler = () => {
+    setHasLike(hasLike=true)
+  }
+
+  useEffect(() => {
+    const incrementLikes = async () => {
+      if(hasLike) {
+        await axios
+        .put(`${baseURL}/videos/${videoId}/likes`)
+        .then((response) => {
+          setLikes(likes=response.data)
+        })
+        .then(
+          setHasLike(hasLike=false)
+        )
+      }
+    }
+    incrementLikes();
+  },[hasLike])
+
+  useEffect(() => {
+    setUpdatedLikes(updatedLikes=likes)
+    setCurrentVideo(currentVideo=updatedLikes)
+  },[likes])
 
   return (
     <>
@@ -153,6 +183,7 @@ function HomePage() {
           {/* VideoDetails generates the details of the main video using currentVideo as its prop */}
           <VideoDetails
             media={currentVideo}
+            likes={likeHandler}
           />
           {/* Comments generates the comments of the main video using videoComponents as its prop */}
           <Comments

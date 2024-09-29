@@ -3,7 +3,7 @@ import viewsIcon from '../../assets/images/icons/views.svg'
 import likesIcon from '../../assets/images/icons/likes.svg'
 import './VideoDetails.scss'
 
-function VideoDetails({media}) {
+function VideoDetails({media, likes}) {
   /* Convert timestamp into mm/dd/yyyy date format */
   const newDate = new Date(media.timestamp);
   const localDate = dynamicDates(newDate);
@@ -29,7 +29,9 @@ function VideoDetails({media}) {
           </p>
           {/* Number of likes */}
           <p className="details__box--right__likes">
-            <img className="details__box--right__image" src={likesIcon}/>
+            <button className="details__box--right__button" onClick={likes}>
+              <img  src={likesIcon}/>
+            </button>
             {media.likes}
           </p>
         </div>

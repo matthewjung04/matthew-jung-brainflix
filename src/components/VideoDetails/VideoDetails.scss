@@ -44,12 +44,18 @@
       }
 
       &__likes {
-        outline: none;
         @extend .details__box--right__views;
       }
 
       &__image {
         padding-right: 8px;
+      }
+
+      &__button {
+        background-color: $White;
+        border: none;
+        padding-right: 8px;
+        cursor: pointer;
       }
     }
   }
