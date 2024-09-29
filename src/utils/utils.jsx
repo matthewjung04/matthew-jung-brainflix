@@ -1,14 +1,6 @@
 import moment from 'moment'
 import axios from 'axios'
 
-/* Mock API URL*/
-export const url = 'https://unit-3-project-api-0a5620414506.herokuapp.com/';
-
-/* Mock API Key */
-const authKey = "9e6ac086-98be-4a83-bc87-b7d7bd18776a";
-export const apiKey = '/?api_key=' + authKey;
-export const videoApiKey = '?api_key=' +authKey;
-
 /* Backend API URL */
 export const baseURL = import.meta.env.VITE_API_URL;
 
@@ -34,4 +26,9 @@ export const convertTime = (time) => {
 /* Convert to dynamic time stamp */
 export function dynamicDates(postTime) {
   return moment(postTime).fromNow();
+}
+
+/* Delay Function */
+export function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }

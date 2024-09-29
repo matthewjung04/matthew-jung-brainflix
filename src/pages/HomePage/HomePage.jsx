@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { url, apiKey, baseURL, getVideoAPI} from '../../utils/utils.jsx'
+import { baseURL, getVideoAPI, delay } from '../../utils/utils.jsx'
 import MainVideo from '../../components/MainVideo/MainVideo'
 import VideoDetails from '../../components/VideoDetails/VideoDetails'
 import Comments from '../../components/Comments/Comments'
@@ -17,6 +17,8 @@ function HomePage() {
   let [commentId, setCommentId] = useState(0);
   let [selected, setSelected] = useState(false);
   let [postedComment, setPostedComment] = useState("");
+  let [newData, setNewData] = useState({});
+  let [updatedData, setUpdatedData] = useState({});
 
   /* ClickHandler extracts the id of the video clicked but does not trigger any changes*/
   const clickHandler = (event) => {
@@ -94,18 +96,20 @@ function HomePage() {
             {"name": "BrainStation", "comment": postedComment}
           )
           .then((response) => {
-            const newComments = videoComments;
-            newComments.unshift(response.data)
-            setVideoComments(videoComments=newComments)
+            setNewData(newData=response.data)
+            
           })
-          .then(
-            setPostedComment(postedComment = "")
-          )
       } 
     }
     postComment();
   },[postedComment])
   
+  useEffect(() => {
+    setUpdatedData(updatedData=newData),
+    videoComments.unshift(updatedData),
+    setPostedComment(postedComment = "")
+  },[newData])
+
   /* Extracts id of deleted comment */
   const deleteHandler = (e) => {
     setCommentId(commentId=e.target.id);
@@ -116,16 +120,13 @@ function HomePage() {
   useEffect(() => {
     const deleteComment = async () => {
       if(selected) {
-        await axios.delete(`${baseURL}/videos/${videoId}/comments/${commentId}`);
-
         await axios
-          .get(`${url}videos/${videoId + apiKey}`)
+          .delete(`${baseURL}/videos/${videoId}/comments/${commentId}`)
           .then((response) => {
-            const newComments = response.data.comments;
-            newComments.sort((a,b) => {return b.timestamp-a.timestamp});
-            setVideoComments(videoComments=newComments);
-        }); 
-        ;
+            const deletedId = response.data.id;
+            const deleteIndex = videoComments.findIndex(deleted => deleted.id == deletedId)
+            videoComments.splice(deleteIndex,1)
+          })
       } 
     }
     deleteComment();
