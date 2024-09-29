@@ -17,8 +17,12 @@ function HomePage() {
   let [commentId, setCommentId] = useState(0);
   let [selected, setSelected] = useState(false);
   let [postedComment, setPostedComment] = useState("");
+  
+  /* React States for double checking axios reponses */
   let [newData, setNewData] = useState({});
   let [updatedData, setUpdatedData] = useState({});
+  let [deleteData, setDeleteData] = useState({});
+  let [updatedDeleteData, setUpdatedDeleteData] = useState({});
 
   /* ClickHandler extracts the id of the video clicked but does not trigger any changes*/
   const clickHandler = (event) => {
@@ -104,6 +108,7 @@ function HomePage() {
     postComment();
   },[postedComment])
   
+  /* Secondary check before posting comment */
   useEffect(() => {
     setUpdatedData(updatedData=newData),
     videoComments.unshift(updatedData),
@@ -123,14 +128,19 @@ function HomePage() {
         await axios
           .delete(`${baseURL}/videos/${videoId}/comments/${commentId}`)
           .then((response) => {
-            const deletedId = response.data.id;
-            const deleteIndex = videoComments.findIndex(deleted => deleted.id == deletedId)
-            videoComments.splice(deleteIndex,1)
+            setDeleteData(deleteData=response.data);
           })
       } 
     }
     deleteComment();
   },[commentId])
+
+  useEffect(() => {
+    setUpdatedDeleteData(updatedDeleteData=deleteData);
+    const deletedId = updatedDeleteData.id;
+    const deleteIndex = videoComments.findIndex(deleted => deleted.id == deletedId)
+    videoComments.splice(deleteIndex,1)
+  },[deleteData])
 
   return (
     <>
