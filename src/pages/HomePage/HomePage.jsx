@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { baseURL, getVideoAPI, delay } from '../../utils/utils.jsx'
+import { baseURL, getVideoAPI } from '../../utils/utils.jsx'
 import MainVideo from '../../components/MainVideo/MainVideo'
 import VideoDetails from '../../components/VideoDetails/VideoDetails'
 import Comments from '../../components/Comments/Comments'

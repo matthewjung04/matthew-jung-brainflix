@@ -44,6 +44,7 @@
       }
 
       &__likes {
+        outline: none;
         @extend .details__box--right__views;
       }
 
