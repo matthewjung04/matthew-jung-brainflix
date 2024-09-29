@@ -10,7 +10,7 @@ function NextVideoList({media, click}) {
       <article> {/* generates props for next videos using data from API */}
         {
           media.map((video) => (
-            <Link to={`/videos/${video.id}`} id="video-link" key={video.id}>
+            <Link to={`/videos/${video.id}`} id="video-link" key={video.id} reloadDocument>
               <NextVideo
               key={video.id}
               id = {video.id}

@@ -1,37 +1,60 @@
-import { Link, Navigate } from 'react-router-dom'
-import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import { baseURL } from '../../utils/utils';
 import videoThumbnail from '../../assets/images/Upload-video-preview.jpg'
 import './UploadPage.scss'
 
 function UploadPage() {
-let [hasSubmit, setHasSubmit] = useState(false);
+  let [title, setTitle] = useState("")
+  let [description, setDescription] = useState("")
+  let [thumbnail, setThumbnail] = useState(videoThumbnail)
+  let [hasSubmit, setHasSubmit] = useState(false)
 
-  /* SubmitHandler adds submit functionality to publihs button */
+  const navigate = useNavigate();
+ 
+  /* SubmitHandler adds submit functionality to publish button */
   const formHanlder = (e) => {
-    e.preventDefault()
-    const title = e.target.title.value;
-    const description = e.target.description.value;
+    const videoTitle = e.target.title.value;
+    const videoDescription = e.target.description.value;
 
-    /* Successfully submits form if all fields are filled in*/
-    if(title && description) {
-      alert(`${title} has been successfully submitted!`)
+    /* Successfully submits form if all fields are filled in */
+    if(videoTitle && videoDescription) {
+      alert(`${videoTitle} has been successfully submitted!`)
+      setTitle(title=videoTitle)
+      setDescription(description=videoDescription)
       setHasSubmit(hasSubmit = true)
     }
 
     /* Returns error if any field is left blank */
-    else if (!title || !description) {
+    else if (!videoTitle || !videoDescription) {
       const titleInput = e.target.querySelector('input');
       const descriptionInput = e.target.querySelector('textarea');
       
-      if(!title) { titleInput.classList.add('error') };
-      if(!description) { descriptionInput.classList.add('error') };
+      if(!videoTitle) { titleInput.classList.add('error') };
+      if(!videoDescription) { descriptionInput.classList.add('error') };
 
       alert('All fields must be filled in')
     }
   }
 
-  /* Redirects to hompage if upload form has been successfully submitted */
-  if(hasSubmit){return <Navigate to="/"/>}
+  /* Reads image filepath and writes as image file source  */
+  const reader = new FileReader();
+
+  /* Changes images source and preview based on uploaded image file */
+  const loadHandler = (e) => {
+    if (e.type === "load") {
+      setThumbnail(thumbnail=reader.result);
+    }
+  }
+
+  const fileHandler = (e) => {
+    reader.addEventListener("load", loadHandler);
+
+    if(e.target.files[0]){
+      reader.readAsDataURL(e.target.files[0])
+    }
+  }
 
   /* Resets the error border when empty field is filled */
   const inputHandler = (e) => {
@@ -41,7 +64,20 @@ let [hasSubmit, setHasSubmit] = useState(false);
     }
   }
 
-  /* Currently uploads page has partial functionality for submit and cancel button links */
+  useEffect(()=> {
+    const postVideo = async () => {
+      if(hasSubmit) {
+        await axios.post(
+          (`${baseURL}/videos`),
+          {title: title, image: thumbnail, description: description}
+        ).then(
+          navigate('/home')
+        )
+      }
+    }
+    postVideo();
+  },[hasSubmit])
+  
   return (
   <>
     <h1 className="uploads-page__header">Upload Video</h1>
@@ -50,11 +86,20 @@ let [hasSubmit, setHasSubmit] = useState(false);
         
         {/* Upload video thumnail photo */}
         <div className="uploads-page__form__fields__thumbnail">
-          <label className="uploads-page__form__fields__thumbnail__label">
-            VIDEO THUMBNAIL
-          </label>
+          <div className="uploads-page__form__fields__thumbnail__upload">
+            <label 
+              className="uploads-page__form__fields__thumbnail__upload__label"
+              htmlFor="imageFile"
+              >VIDEO THUMBNAIL
+            </label>
+            <input
+              className="uploads-page__form__fields__thumbnail__upload__file"
+              type="file" name="imageFile"
+              onChange={fileHandler} accept="image/*"
+            />
+          </div>
           <img
-            src={videoThumbnail} 
+            src={thumbnail} 
             className="uploads-page__form__fields__thumbnail__image"
             alt="upload-image"
           />
@@ -63,7 +108,7 @@ let [hasSubmit, setHasSubmit] = useState(false);
         {/* Form input fields */}
         <div className="uploads-page__form__fields__inputs">
 
-          {/* Input video title */}
+          {/* Input video videoTitle */}
           <label 
             className="uploads-page__form__fields__inputs__label"
             htmlFor="title"
@@ -73,10 +118,10 @@ let [hasSubmit, setHasSubmit] = useState(false);
             type="text" name="title"
             onKeyDown={inputHandler}
             className="uploads-page__form__fields__inputs__text" 
-            placeholder="Add a title to your video"
+            placeholder="Add a videoTitle to your video"
           />
 
-          {/* Input video description */}
+          {/* Input video video Description */}
           <label
             className="uploads-page__form__fields__inputs__label"
             htmlFor="description"
@@ -86,18 +131,17 @@ let [hasSubmit, setHasSubmit] = useState(false);
             name="description"
             onKeyDown={inputHandler}
             className="uploads-page__form__fields__inputs__textbox"
-            placeholder="Add a description to your video">
+            placeholder="Add a videoDescription to your video">
           </textarea>
         </div>
       </article>
 
       {/* Submit button and 'cancel' link */}
       <article className="uploads-page__form__buttons">
-        {/* Alerts sucess of submission and redirects to hompage */}
-        <button type="submit" className="uploads-page__form__buttons__publish">
-          PUBLISH
-        </button>
-        {/* Redirects to hompage */}
+          <button type="submit" className="uploads-page__form__buttons__publish">
+            PUBLISH
+          </button>
+
         <Link to="/" className="uploads-page__form__buttons__cancel" reloadDocument>
           CANCEL
         </Link>
