@@ -3,6 +3,7 @@
 ## Acknowledgement
 - [Brainstation](https://brainstation.io/)
 - [Postman](https://www.postman.com/)
+- [Thunder Client](https://www.thunderclient.com/)
 - [StackBlitz](https://stackblitz.com/edit/react-fu7pbk?file=src%2FApp.js)
 - [Vite](https://vitejs.dev/)
 - [npm](https://www.npmjs.com/)
@@ -17,12 +18,25 @@
 - To run the project use: `$ npm run dev`
 
 ## Installed Packages
-- [npm sass](https://www.npmjs.com/package/sass)    
+- [npm axios](https://www.npmjs.com/package/axios)    
     - Installation:
-    `$ npm install sass`
+    `$ npm install axios`
+
+- [npm dotenv](https://www.npmjs.com/package/dotenv)    
+    - Installation:
+    `$ npm install dotenv --save`
+
+- [npm moment](https://www.npmjs.com/package/moment)    
+    - Installation:
+    `$ npm install moment`
+
 - [npm react-router-dom](https://www.npmjs.com/package/react-router-dom)
     - Installation:
     `$ npm install react-router-dom`
+
+- [npm sass](https://www.npmjs.com/package/sass)    
+    - Installation:
+    `$ npm install sass`
 
 ## Sprint-1 Overview
 You have been approached by an entrepreneur to build out a prototype for a new video streaming platform called BrainFlix. The entrepreneur has meetings lined up for funding with several VCs and needs the prototype built within the next three weeks. BrainFlix’s Creative Director has provided you with a package and mockup of how they envision the final product. There is also a separate team that is currently working on a backend API needed to integrate with the front-end, but for the time being the static function components need to be put together.
@@ -43,8 +57,9 @@ A decision has been made to build out an actual API for the prototype and move a
 
 ## Tech Stack
 - React, vite, npm
+- node.js
+- express.js
 - JavaScript (js, jsx)
 - APIs (WebAPIs)
-- node
 - HTML
 - CSS, SASS
