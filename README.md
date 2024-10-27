@@ -55,6 +55,8 @@ A decision has been made to build out an actual API for the prototype and move a
 - Using the mock API as your guide, build out your own API service that will manage the video data, and update the client application to use your API service. 
 - Create a new repository for your server-side code.
 
+Back-End Git Repository: https://github.com/matthewjung04/matthew-jung-brainflix-api.git
+
 ## Tech Stack
 - React, vite, npm
 - node.js
