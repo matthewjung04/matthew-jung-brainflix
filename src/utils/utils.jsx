@@ -2,7 +2,7 @@ import moment from 'moment'
 import axios from 'axios'
 
 /* Backend API URL */
-export const baseURL = import.meta.env.VITE_API_URL;
+export const baseURL = import.meta.env.VITE_API_URL || 'https://brain-flix-backend-041661866405.herokuapp.com/';
 
 /* API GET Request */
 export const getVideoAPI = async (video, setVideo, setComment) => {
